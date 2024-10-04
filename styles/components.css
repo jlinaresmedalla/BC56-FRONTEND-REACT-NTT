@@ -1,0 +1,69 @@
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.8rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  box-shadow: var(--shadow3);
+  background-color: var(--primary-color);
+}
+
+.primary-button:active {
+  transform: scale(0.95);
+}
+
+.input-field {
+  padding: 0.75rem;
+  height: 3rem;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-field:hover {
+  box-shadow: var(--shadow2);
+  opacity: 0.9;
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow1);
+}
+
+.select-field {
+  height: 3rem;
+  padding: 0.9rem;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.select-field:hover {
+  box-shadow: var(--shadow2);
+  opacity: 0.9;
+}
+
+.select-field:focus {
+  box-shadow: var(--shadow1);
+  border-color: var(--primary-color);
+}
+
+.chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  cursor: pointer;
+}

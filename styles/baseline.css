@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --base-font-family: "Poppins";
+  --base-font-weight: 400;
+  --base-font-size: 16px;
+
+  --light-bg-color: #fdfdfd;
+  --primary-color: #0060ae;
+  --secondary-color: #8800d6;
+
+  --gradient-bg-1: linear-gradient(97deg, #dfe8f7 2.88%, rgba(176, 196, 222, 0) 124.33%);
+  --gradient-bg-2: linear-gradient(97deg, rgba(176, 196, 222, 0) 0%, #ebf2fd 50%, rgba(176, 196, 222, 0) 100%);
+
+  --shadow1: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  --shadow2: 0px 3px 6px 0px rgba(0, 0, 0, 0.1), 0px 2px 7px 0px rgba(0, 0, 0, 0.06);
+  --shadow3: 0px 7px 14px 0px rgba(0, 0, 0, 0.1), 0px 6px 15px 0px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: var(--base-font-size);
+  font-family: var(--base-font-family);
+  font-weight: var(--base-font-weight);
+  background-color: var(--light-bg-color);
+  margin: auto;
+  line-height: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 2rem;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.primary-text-color {
+  color: var(--primary-color);
+}
+
+.secondary-text-color {
+  color: var(--secondary-color);
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+  :root {
+    --base-font-size: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --base-font-size: 14px;
+  }
+}
