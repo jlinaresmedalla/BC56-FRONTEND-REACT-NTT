@@ -1,6 +1,5 @@
 import { getCategories, getProducts, getProductsByCategory } from "./api";
-import { SelectOption } from "./components/SelectOptions";
-import { renderProducts } from "./utils";
+import { renderCategories, renderProducts } from "./utils";
 
 let productListState = [];
 
@@ -11,11 +10,7 @@ export const loadAllProducts = async () => {
 
 export const loadCategories = async () => {
   const categories = await getCategories();
-  const categorySelectField = document.getElementById("category-select-field");
-
-  categories?.forEach((category) => {
-    SelectOption(category, categorySelectField);
-  });
+  renderCategories(categories);
 };
 
 export const handleCategoryChange = async (e) => {
