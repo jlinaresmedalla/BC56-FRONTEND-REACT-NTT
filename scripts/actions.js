@@ -1,5 +1,5 @@
 import { getCategories, getProducts, getProductsByCategory } from "./api";
-import { renderCategories, renderProducts } from "./utils";
+import { cartCount, getCart, getCartCount, renderCategories, renderProducts, setCart } from "./utils";
 
 let productListState = [];
 
@@ -28,4 +28,18 @@ export const handleSearchInputChange = (e) => {
     product?.title?.toLowerCase().includes(e.target.value?.toLowerCase()),
   );
   renderProducts(filteredProductList);
+};
+
+export const handleCartProductAdd = (product) => () => {
+  let cart = getCart();
+  const productIndex = cart.findIndex((p) => p.id === product.id);
+
+  if (productIndex !== -1) {
+    cart[productIndex].quantity += 1;
+  } else {
+    cart.push({ id: product.id, quantity: 1 });
+  }
+
+  setCart(cart);
+  cartCount.textContent = getCartCount();
 };

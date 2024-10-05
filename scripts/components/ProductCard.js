@@ -1,3 +1,5 @@
+import { handleCartProductAdd } from "../actions";
+
 export const ProductCard = (product, container) => {
   const productCard = document.createElement("div");
   productCard.classList.add("product-card");
@@ -66,6 +68,7 @@ export const ProductCard = (product, container) => {
 
   const button = document.createElement("button");
   button.classList.add("primary-button");
+  button.addEventListener("click", handleCartProductAdd(product));
   button.textContent = "Agregar al carrito";
 
   productCard.appendChild(img);
