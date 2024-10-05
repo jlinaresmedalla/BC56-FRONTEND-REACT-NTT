@@ -1,3 +1,7 @@
-import { loadProducts } from "./actions";
+import { handleCategoryChange, loadAllProducts, loadCategories } from "./actions";
 
-loadProducts();
+const categorySelect = document.getElementById("category-select-field");
+categorySelect.addEventListener("change", handleCategoryChange);
+
+loadCategories();
+loadAllProducts();
