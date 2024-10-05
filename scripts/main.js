@@ -1,7 +1,10 @@
-import { handleCategoryChange, loadAllProducts, loadCategories } from "./actions";
+import { handleCategoryChange, handleSearchInputChange, loadAllProducts, loadCategories } from "./actions";
+
+loadCategories();
+loadAllProducts();
 
 const categorySelect = document.getElementById("category-select-field");
 categorySelect.addEventListener("change", handleCategoryChange);
 
-loadCategories();
-loadAllProducts();
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", handleSearchInputChange);

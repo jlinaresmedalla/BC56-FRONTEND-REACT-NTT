@@ -2,9 +2,11 @@ import { getCategories, getProducts, getProductsByCategory } from "./api";
 import { SelectOption } from "./components/SelectOptions";
 import { renderProducts } from "./utils";
 
+let productListState = [];
+
 export const loadAllProducts = async () => {
-  const products = await getProducts();
-  renderProducts(products);
+  productListState = await getProducts();
+  renderProducts(productListState);
 };
 
 export const loadCategories = async () => {
@@ -22,6 +24,13 @@ export const handleCategoryChange = async (e) => {
     return;
   }
 
-  const products = await getProductsByCategory(e.target.value);
-  renderProducts(products);
+  productListState = await getProductsByCategory(e.target.value);
+  renderProducts(productListState);
+};
+
+export const handleSearchInputChange = (e) => {
+  const filteredProductList = productListState?.filter((product) =>
+    product?.title?.toLowerCase().includes(e.target.value?.toLowerCase()),
+  );
+  renderProducts(filteredProductList);
 };
