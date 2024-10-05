@@ -20,11 +20,13 @@ npm run dev
 
 ## Criterios
 
-### Semana 1 - Diseños y estilos
+### Semana 1 - Javascript
 
 Para este proyecto inicial se consideró lo siguiente:
 
-- Estructura de carpetas separadas tanto para imagenes y estilos.
-- Para los estilos, creé 3 archivos diferentes para organizar los estilos base (baseline), el de los componentes base (components) y los componentes custom (layer). Además de crear variables root en "baseline" para posteriormente a medida que vaya creciendo el proyecto poder escalarlo a un design system.
-- Por el momento dejé todo el html en index, en los proximos entregables se irá estructurando usando React.
-- Se agregó "prettier" para mantener un standart y el código se vea organizado.
+- Añadí la carpeta scripts para organizar los archivos .js
+- Para las distintas funcionalidades designé archivos para manejar las peticiones de la api (api), los metodos o acciones (actions),
+  también funciones y constantes de apoyo (utils), creación de componetes a renderizar en base a props (components) y por ultimo un archivo de
+  ejecución al momento de cargar la pagina (main).
+- También dejo las bases para persistir el cart mediante el uso del localstorage.
+- Se cambiaron algunos estilos a medida que se fué integrando con la API.
