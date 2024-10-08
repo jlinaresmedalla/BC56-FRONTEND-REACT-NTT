@@ -18,15 +18,37 @@ npm run dev
 
 - Luego abrir http://localhost:5173/ en tu navegador.
 
+## Estructura de carpetas
+
+```bash
+/src
+│
+├── /actions          # Functionalidades y acciones
+│
+├── /api              # Manejo de los request al servidor
+│
+├── /assets           # Archivos estáticos (imágenes, iconos, etc)
+│
+├── /components       # Componentes reutilizables
+│
+├── /interfaces       # Interfaces y tipos
+│
+├── /styles           # Estilos en general
+│
+├── /utils            # Carpeta para métodos y/o constantes de ayuda
+│   ├── /constants    # Constantes globales
+│   ├── /helpers      # Métodos y funciones para responsabilidades específicas
+│   └── /mappings     # Mappers para las respuestas del servidor
+│
+└── main.ts           # Archivo principal para ejecucion de la aplicacion
+```
+
 ## Criterios
 
-### Semana 1 - Javascript
+### Semana 2 - Typescript
 
-Para este proyecto inicial se consideró lo siguiente:
+Para este entregable se consideró lo siguiente:
 
-- Añadí la carpeta scripts para organizar los archivos .js
-- Para las distintas funcionalidades designé archivos para manejar las peticiones de la api (api), los metodos o acciones (actions),
-  también funciones y constantes de apoyo (utils), creación de componetes a renderizar en base a props (components) y por ultimo un archivo de
-  ejecución al momento de cargar la pagina (main).
-- También dejo las bases para persistir el cart mediante el uso del localstorage.
-- Se cambiaron algunos estilos a medida que se fué integrando con la API.
+- Se añadió estructura de carpetas partiendo de la carpeta principal /src
+- Se hizo la migración de js a ts usando lo aprendido en clase.
+- Se aplicó el patrón Mapper.
