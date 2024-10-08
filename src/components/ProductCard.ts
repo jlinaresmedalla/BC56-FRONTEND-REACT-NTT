@@ -1,6 +1,7 @@
-import { handleCartProductAdd } from "../actions";
+import { handleCartProductAdd } from "../actions/cart.actions";
+import { Product } from "../interfaces/product.interface";
 
-export const ProductCard = (product, container) => {
+export const ProductCard = (product: Product, container: HTMLElement) => {
   const productCard = document.createElement("div");
   productCard.classList.add("product-card");
 
@@ -47,10 +48,10 @@ export const ProductCard = (product, container) => {
   ratingLabel.classList.add("subtitle");
   ratingLabel.textContent = "Rating: ";
 
-  const ratingValue = document.createTextNode(product.rating);
+  const ratingValue = document.createTextNode(`${product.rating}`);
 
   const starIcon = document.createElement("img");
-  starIcon.src = "assets/icons/starIcon.svg";
+  starIcon.src = "/src/assets/icons/starIcon.svg";
   starIcon.alt = "star_icon";
 
   rating.appendChild(ratingLabel);
