@@ -14,3 +14,9 @@ cartCount.textContent = getCartCount().toString();
 
 categorySelectField.addEventListener("change", handleCategoryChange);
 searchInput.addEventListener("input", handleSearchInputChange);
+
+const App = () => {
+  return <div> Hello world </div>;
+};
+
+export default App;

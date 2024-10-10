@@ -10,6 +10,7 @@ export const getProducts = async (): Promise<Product[]> => {
     const data: ProductListApiResponse = await response.json();
     return getProductListMapper(data);
   } catch (e) {
+    console.error(e);
     return [];
   }
 };
@@ -21,6 +22,7 @@ export const getCategories = async (): Promise<Category[]> => {
 
     return getCategoryListMapper(data);
   } catch (e) {
+    console.error(e);
     return [];
   }
 };
@@ -31,6 +33,7 @@ export const getProductsByCategory = async (url: string): Promise<Product[]> => 
     const data: ProductListApiResponse = await response.json();
     return getProductListMapper(data);
   } catch (e) {
+    console.error(e);
     return [];
   }
 };
