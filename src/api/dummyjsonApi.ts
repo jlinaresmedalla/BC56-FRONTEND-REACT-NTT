@@ -1,6 +1,5 @@
-import { Category, CategoryApiResponse } from "../interfaces/category.interface";
-import { Product, ProductListApiResponse } from "../interfaces/product.interface";
-import { getCategoryListMapper, getProductListMapper } from "../utils/mappings/request.mapper";
+import { Category, CategoryApiResponse, Product, ProductListApiResponse } from "@/interfaces";
+import { getCategoryListMapper, getProductListMapper } from "@/utils/mappings/request.mapper";
 
 const API_URL = "https://dummyjson.com";
 
@@ -8,10 +7,12 @@ export const getProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch(`${API_URL}/products`);
     const data: ProductListApiResponse = await response.json();
+
     return getProductListMapper(data);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    console.error(e);
-    return [];
+    throw Error("Hubo un error al cargar los productos del servidor");
   }
 };
 
@@ -21,9 +22,10 @@ export const getCategories = async (): Promise<Category[]> => {
     const data: CategoryApiResponse[] = await response.json();
 
     return getCategoryListMapper(data);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    console.error(e);
-    return [];
+    throw Error("Hubo un error al cargar los categorías del servidor");
   }
 };
 
@@ -31,9 +33,11 @@ export const getProductsByCategory = async (url: string): Promise<Product[]> => 
   try {
     const response = await fetch(url);
     const data: ProductListApiResponse = await response.json();
+
     return getProductListMapper(data);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    console.error(e);
-    return [];
+    throw Error("Hubo un error al cargar los productos por categoría del servidor");
   }
 };

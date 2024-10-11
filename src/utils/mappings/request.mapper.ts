@@ -1,5 +1,4 @@
-import { Category, CategoryApiResponse } from "../../interfaces/category.interface";
-import { Product, ProductApiResponse, ProductListApiResponse } from "../../interfaces/product.interface";
+import { Category, CategoryApiResponse, Product, ProductApiResponse, ProductListApiResponse } from "@/interfaces";
 
 export const getProductListMapper = (productListApiResponse: ProductListApiResponse): Product[] => {
   const { products } = productListApiResponse;

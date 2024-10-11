@@ -1,0 +1,21 @@
+footer {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  max-width: 1440px;
+  margin: auto;
+  justify-content: space-between;
+  background: var(--gradient-bg-2);
+  gap: 0.5rem;
+}
+
+footer > p {
+  text-align: center;
+}
+
+footer > .socials {
+  display: flex;
+  gap: 1rem;
+}
