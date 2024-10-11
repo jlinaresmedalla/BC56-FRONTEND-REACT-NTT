@@ -2,7 +2,17 @@ import { Product } from "@/interfaces";
 import { Star } from "lucide-react";
 import "./ProductCard.css";
 
-export const ProductCard = ({ title, category, price, rating, thumbnail }: Product) => {
+type ProductCardProps = Product & { handleAddCartItemButton: (id: number) => () => void };
+
+export const ProductCard = ({
+  id,
+  title,
+  category,
+  price,
+  rating,
+  thumbnail,
+  handleAddCartItemButton,
+}: ProductCardProps) => {
   return (
     <div className="product-card">
       <img src={thumbnail} alt={title} />
@@ -23,7 +33,9 @@ export const ProductCard = ({ title, category, price, rating, thumbnail }: Produ
         </div>
       </div>
       <hr />
-      <button className="primary-button">Agregar al carrito</button>
+      <button className="primary-button" onClick={handleAddCartItemButton(id)}>
+        Agregar al carrito
+      </button>
     </div>
   );
 };

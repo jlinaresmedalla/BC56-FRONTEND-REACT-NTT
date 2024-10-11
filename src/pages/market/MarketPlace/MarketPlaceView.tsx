@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MarketPlaceViewProps } from "./MarketPlace.interface";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import "./MarketPlace.css";
+import { StoreContext } from "@/Providers/storeProvider";
+import { AddCartItem } from "@/Providers/cart.reducers";
 
 export const MarketPlaceView = ({
   categoryList,
@@ -11,6 +13,7 @@ export const MarketPlaceView = ({
   isProductListLoading,
 }: MarketPlaceViewProps) => {
   const [searchInput, setSearchInput] = useState<string>("");
+  const { dispatch } = useContext(StoreContext);
 
   const filteredProductList = producList?.filter((product) =>
     product?.title?.toLowerCase().includes(searchInput.toLowerCase()),
@@ -22,6 +25,10 @@ export const MarketPlaceView = ({
 
   const handleCategorySelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
+  };
+
+  const handleAddCartItemButton = (id: number) => () => {
+    AddCartItem(dispatch, { id });
   };
 
   return (
@@ -50,7 +57,9 @@ export const MarketPlaceView = ({
         {isProductListLoading ? (
           <div>Loading...</div>
         ) : (
-          filteredProductList?.map((product) => <ProductCard key={product.id} {...product} />)
+          filteredProductList?.map((product) => (
+            <ProductCard key={product.id} {...product} handleAddCartItemButton={handleAddCartItemButton} />
+          ))
         )}
       </div>
     </section>
