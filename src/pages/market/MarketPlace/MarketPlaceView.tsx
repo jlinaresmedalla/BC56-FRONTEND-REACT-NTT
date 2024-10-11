@@ -4,6 +4,8 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import "./MarketPlace.css";
 import { StoreContext } from "@/Providers/storeProvider";
 import { AddCartItem } from "@/Providers/cart.reducers";
+import { Loader } from "@/components";
+import { SearchX } from "lucide-react";
 
 export const MarketPlaceView = ({
   categoryList,
@@ -53,13 +55,21 @@ export const MarketPlaceView = ({
         </select>
       </div>
       <div className="products-container" id="products-container">
-        {!filteredProductList?.length && <div>No se encontraron productos</div>}
         {isProductListLoading ? (
-          <div>Loading...</div>
+          <Loader size={100} />
         ) : (
-          filteredProductList?.map((product) => (
-            <ProductCard key={product.id} {...product} handleAddCartItemButton={handleAddCartItemButton} />
-          ))
+          <>
+            {filteredProductList?.map((product) => (
+              <ProductCard key={product.id} {...product} handleAddCartItemButton={handleAddCartItemButton} />
+            ))}
+            {!filteredProductList?.length && (
+              <div>
+                <SearchX size={200} />
+                <br />
+                <strong>No se encontraron productos</strong>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
