@@ -1,0 +1,39 @@
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.products-section > .filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.products-section > .filters > input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+@media (max-width: 700px) {
+  .products-section > .filters {
+    flex-direction: column;
+  }
+
+  .products-section > .filters > input,
+  .products-section > .filters > select {
+    width: 100%;
+  }
+
+  .productsContainer {
+    flex-direction: column;
+  }
+}

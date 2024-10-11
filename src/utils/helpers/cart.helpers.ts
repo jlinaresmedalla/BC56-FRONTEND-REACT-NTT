@@ -1,4 +1,4 @@
-import { Cart } from "../../interfaces/cart.interface";
+import { Cart } from "@/interfaces";
 
 export const getCart = (): Cart => JSON.parse(localStorage.getItem("cart")!) || [];
 export const setCart = (cart: Cart) => localStorage.setItem("cart", JSON.stringify(cart));
