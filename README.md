@@ -23,15 +23,19 @@ npm run dev
 ```bash
 /src
 │
-├── /actions          # Functionalidades y acciones
-│
 ├── /api              # Manejo de los request al servidor
 │
 ├── /assets           # Archivos estáticos (imágenes, iconos, etc)
 │
 ├── /components       # Componentes reutilizables
 │
+├── /hooks            # Functionalidades y acciones
+│
 ├── /interfaces       # Interfaces y tipos
+│
+├── /pages            # Paginas con sus respectivos modulos y/o secciones.
+│
+├── /providers        # Configuracion de contextos y providers para la app.
 │
 ├── /styles           # Estilos en general
 │
@@ -40,15 +44,19 @@ npm run dev
 │   ├── /helpers      # Métodos y funciones para responsabilidades específicas
 │   └── /mappings     # Mappers para las respuestas del servidor
 │
+├── App.ts            # Se dejó la base para implementar rutas en el futuro
+│
 └── main.ts           # Archivo principal para ejecucion de la aplicacion
 ```
 
 ## Criterios
 
-### Semana 2 - Typescript
+### Semana 2 - React-fundamentos
 
 Para este entregable se consideró lo siguiente:
 
-- Se añadió estructura de carpetas partiendo de la carpeta principal /src
-- Se hizo la migración de js a ts usando lo aprendido en clase.
-- Se aplicó el patrón Mapper.
+- Se reestructuraron las carpetas para utilizar React.
+- Se configuró eslint y prettier como base para un código organizado y facilitar el desarrollo.
+- Se añadió un store para el manejo de diferentes contextos, en este caso para el contador del cart, dejando la base para añadir las siguientes funcionalidades.
+- Se añadió librería de iconos.
+- Las pagínas contienes subcarpetas que son los modulos que se mostraran en la página, los cuales contienen sus propios estilos y tipos. Esto para evitar que componentes estaticos como el banner no sea afectado por los rerenders a causa de los estados en marketplace.
