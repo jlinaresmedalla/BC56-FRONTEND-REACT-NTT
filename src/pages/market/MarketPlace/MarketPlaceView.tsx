@@ -64,9 +64,13 @@ export const MarketPlaceView = ({
             ))}
             {!filteredProductList?.length && (
               <div>
-                <SearchX size={200} />
+                <center>
+                  <SearchX size={200} />
+                </center>
                 <br />
-                <strong>No se encontraron productos</strong>
+                <center>
+                  No se encontraron productos con "<b>{searchInput}</b>" en esta categoría
+                </center>
               </div>
             )}
           </>
