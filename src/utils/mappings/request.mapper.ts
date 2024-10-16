@@ -16,6 +16,6 @@ export const getProductListMapper = (productListApiResponse: ProductListApiRespo
 export const getCategoryListMapper = (categoryListApiResponse: CategoryApiResponse[]): Category[] => {
   return categoryListApiResponse.map((category) => ({
     name: category.name,
-    url: category.url,
+    slug: category.slug,
   }));
 };

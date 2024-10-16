@@ -29,9 +29,9 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 };
 
-export const getProductsByCategory = (url: string) => async (): Promise<Product[]> => {
+export const getProductsByCategory = (slug: string) => async (): Promise<Product[]> => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${API_URL}/products/category/${slug}`);
     const data: ProductListApiResponse = await response.json();
 
     return getProductListMapper(data);

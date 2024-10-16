@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { MarketPlaceViewProps } from "./MarketPlace.interface";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
-import "./MarketPlace.css";
 import { StoreContext } from "@/Providers/storeProvider";
 import { AddCartItem } from "@/Providers/cart.reducers";
 import { Loader } from "@/components";
 import { SearchX } from "lucide-react";
+import "./MarketPlace.css";
 
 export const MarketPlaceView = ({
   categoryList,
@@ -48,7 +48,7 @@ export const MarketPlaceView = ({
         <select className="select-field" onChange={handleCategorySelect} value={selectedCategory}>
           <option value="">Todas las categorías</option>
           {categoryList?.map((category) => (
-            <option value={category.url} key={category.url}>
+            <option value={category.slug} key={category.slug}>
               {category.name}
             </option>
           ))}

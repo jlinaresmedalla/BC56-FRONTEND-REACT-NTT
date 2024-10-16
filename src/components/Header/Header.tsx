@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CircleUserRound, ShoppingCart } from "lucide-react";
 import { StoreContext } from "@/Providers/storeProvider";
 import { getCartCount } from "@/utils/helpers/cart.helpers";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 export const Header = () => {
@@ -18,9 +19,9 @@ export const Header = () => {
         <div className="chip">
           Profile <CircleUserRound size={20} color="#ffffff" />
         </div>
-        <a className="chip">
+        <Link to={"/resumen"} className="chip">
           <span id="cart-count">{cartCount}</span> <ShoppingCart size={20} color="#ffffff" strokeWidth={2.5} />
-        </a>
+        </Link>
       </nav>
     </header>
   );
