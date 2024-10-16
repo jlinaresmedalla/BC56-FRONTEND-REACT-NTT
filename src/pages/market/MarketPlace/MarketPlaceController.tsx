@@ -1,21 +1,21 @@
 import { useState } from "react";
-
 import { MarketPlaceView } from "./MarketPlaceView";
-import useCategoryListQuery from "@/hooks/useCategoryListQuery";
-import useProductListQuery from "@/hooks/useProductListQuery";
+import { useFetch } from "@/hooks/useFetch";
+import { getCategories, getProducts, getProductsByCategory } from "@/api/dummyjsonApi";
 
 const MarketPlaceController = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const getProductList = selectedCategory ? getProductsByCategory(selectedCategory) : getProducts;
 
-  const categoryList = useCategoryListQuery();
-  const { productList, isProductListLoading } = useProductListQuery(selectedCategory);
+  const { data: categoryList } = useFetch(getCategories);
+  const { data: producList, isLoading: isProductListLoading } = useFetch(getProductList, [selectedCategory]);
 
   return (
     <MarketPlaceView
       categoryList={categoryList}
       setSelectedCategory={setSelectedCategory}
       selectedCategory={selectedCategory}
-      producList={productList}
+      producList={producList}
       isProductListLoading={isProductListLoading}
     />
   );
