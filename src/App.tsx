@@ -1,14 +1,7 @@
-import { Footer, Header } from "./components";
-import { MarketPage } from "./pages";
+import PageRoutes from "./routes/app.routes";
 
 const App = () => {
-  return (
-    <>
-      <Header />
-      <MarketPage />
-      <Footer />
-    </>
-  );
+  return <PageRoutes />;
 };
 
 export default App;

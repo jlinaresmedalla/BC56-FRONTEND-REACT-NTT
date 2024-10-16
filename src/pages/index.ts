@@ -1,3 +1,2 @@
-import MarketPage from "./market/MaketPage";
-
-export { MarketPage };
+export * from "./market/MaketPage";
+export * from "./resumen/ResumenPage";

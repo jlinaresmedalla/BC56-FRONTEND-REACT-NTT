@@ -2,7 +2,7 @@ import MarketPlaceController from "./MarketPlace/MarketPlaceController";
 import { BannerSection } from "./BannerSection/BannerSection";
 import "./MarketPage.css";
 
-const MarketPage = () => {
+export const MarketPage = () => {
   return (
     <main>
       <BannerSection />
@@ -10,5 +10,3 @@ const MarketPage = () => {
     </main>
   );
 };
-
-export default MarketPage;
