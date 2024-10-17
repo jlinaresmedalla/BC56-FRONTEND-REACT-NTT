@@ -1,3 +1,10 @@
+import { CartSection } from "./CartSection/CartSection";
+import "./ResumenPage.css";
+
 export const ResumenPage = () => {
-  return <div>resumen page</div>;
+  return (
+    <main>
+      <CartSection />
+    </main>
+  );
 };

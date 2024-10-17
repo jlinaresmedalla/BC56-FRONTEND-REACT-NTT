@@ -90,6 +90,14 @@ h5 {
   color: var(--secondary-color);
 }
 
+.desktop-hide {
+  display: none;
+}
+
+.mobile-hide {
+  display: flex;
+}
+
 @media (min-width: 700px) and (max-width: 1024px) {
   :root {
     --base-font-size: 15px;
@@ -99,5 +107,13 @@ h5 {
 @media (max-width: 700px) {
   :root {
     --base-font-size: 14px;
+  }
+
+  .desktop-hide {
+    display: flex;
+  }
+
+  .mobile-hide {
+    display: none;
   }
 }
