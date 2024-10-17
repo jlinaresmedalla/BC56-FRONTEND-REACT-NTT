@@ -15,3 +15,8 @@ export interface StoreContextProps {
   state: StoreState;
   dispatch: Dispatch<CartAction>;
 }
+
+export interface CartContextProps {
+  state: Cart;
+  dispatch: Dispatch<CartAction>;
+}

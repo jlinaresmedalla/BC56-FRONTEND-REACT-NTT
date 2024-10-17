@@ -8,6 +8,8 @@
   --light-bg-color: #fdfdfd;
   --primary-color: #0060ae;
   --secondary-color: #8800d6;
+  --ghost-color: #afafaf;
+  --danger-color: #d10202;
 
   --gradient-bg-1: linear-gradient(97deg, #dfe8f7 2.88%, rgba(176, 196, 222, 0) 124.33%);
   --gradient-bg-2: linear-gradient(97deg, rgba(176, 196, 222, 0) 0%, #ebf2fd 50%, rgba(176, 196, 222, 0) 100%);
@@ -33,7 +35,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 
@@ -88,6 +90,14 @@ h5 {
 
 .secondary-text-color {
   color: var(--secondary-color);
+}
+
+.primary-bg-color {
+  background-color: var(--primary-color);
+}
+
+.secondary-bg-color {
+  background-color: var(--secondary-color);
 }
 
 .desktop-hide {
