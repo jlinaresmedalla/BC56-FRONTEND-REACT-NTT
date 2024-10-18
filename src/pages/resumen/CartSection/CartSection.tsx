@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { CartContext } from "@/Providers/CartProvider";
-import { calculateCartTotalAmount } from "@/utils/helpers/cart.helpers";
+import { calculateCartTotalAmount } from "@/helpers/cart.helpers";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "@/hooks/cart.hooks";
 import "./CartSection.css";
 
 const CART_HEADERS = ["Producto", "Nombre", "Cantidad", "Eliminar"];
 
 export const CartSection = () => {
+  const { cartState, incrementQuantity, decrementQuantity, removeCartProduct } = useCart();
   const navigate = useNavigate();
-  const { cartState, incrementQuantity, decrementQuantity, removeCartProduct } = useContext(CartContext);
   const totalAmount = calculateCartTotalAmount(cartState).toFixed(2);
 
   return (

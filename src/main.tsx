@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { CartProvider } from "./Providers/CartProvider";
+import { CartProvider } from "./contexts/CartProvider";
 import App from "./App";
 import "./index.css";
 

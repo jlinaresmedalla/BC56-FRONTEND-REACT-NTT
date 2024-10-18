@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { CircleUserRound, ShoppingCart } from "lucide-react";
-import { CartContext } from "@/Providers/CartProvider";
-import { getCartCount } from "@/utils/helpers/cart.helpers";
+import { getCartCount } from "@/helpers/cart.helpers";
 import { Link } from "react-router-dom";
+import { useCart } from "@/hooks/cart.hooks";
 import "./Header.css";
 
 export const Header = () => {
-  const { cartState } = useContext(CartContext);
+  const { cartState } = useCart();
   const cartCount = getCartCount(cartState);
 
   return (

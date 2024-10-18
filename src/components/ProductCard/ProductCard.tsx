@@ -1,20 +1,10 @@
-import { CartItem, Product } from "@/interfaces";
+import { Product } from "@/interfaces";
 import { Star } from "lucide-react";
-import { useContext } from "react";
-import { CartContext } from "@/Providers/CartProvider";
+import { useCart } from "@/hooks/cart.hooks";
 import "./ProductCard.css";
 
 export const ProductCard = ({ id, title, category, price, rating, thumbnail }: Product) => {
-  const { cartState, addCartProduct, incrementQuantity } = useContext(CartContext);
-
-  const handleAddCartItemButton = (product: CartItem) => () => {
-    const productExist = cartState.some((item) => item.id === product.id);
-    if (productExist) {
-      incrementQuantity(product.id);
-      return;
-    }
-    addCartProduct(product);
-  };
+  const { addCartProduct } = useCart();
 
   return (
     <div className="product-card">
@@ -36,7 +26,7 @@ export const ProductCard = ({ id, title, category, price, rating, thumbnail }: P
         </div>
       </div>
       <hr />
-      <button className="primary-button" onClick={handleAddCartItemButton({ id, price, title, thumbnail })}>
+      <button className="primary-button" onClick={addCartProduct({ id, price, title, thumbnail })}>
         Agregar al carrito
       </button>
     </div>
