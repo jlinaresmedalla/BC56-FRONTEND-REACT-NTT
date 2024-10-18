@@ -3,6 +3,7 @@ import { useCategoryListQuery, useProductListQuery } from "@/hooks/fetch.hooks";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { Loader } from "@/components";
 import { SearchX } from "lucide-react";
+import { Input, Select } from "@/components/UI";
 import "./MarketPlace.css";
 
 export const MarketPlace = () => {
@@ -28,22 +29,23 @@ export const MarketPlace = () => {
     <section className="products-section" id="products-section">
       <h3>Encuentra lo que buscas en nuestro catálogo</h3>
       <div className="filters">
-        <input
+        <Input
           type="text"
-          className="input-field"
           id="search-input"
+          containerClassName="search-input"
           placeholder="Buscar productos..."
           onChange={handleSearchInputChange}
           value={searchInput}
         />
-        <select className="select-field" onChange={handleCategorySelect} value={selectedCategory}>
-          <option value="">Todas las categorías</option>
-          {categoryList?.map((category) => (
-            <option value={category.slug} key={category.slug}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+        <Select
+          options={categoryList!}
+          valueKey={"slug"}
+          labelKey={"name"}
+          containerClassName="search-category"
+          staticLabel="Todas las categorías"
+          onChange={handleCategorySelect}
+          value={selectedCategory}
+        />
       </div>
       <div className="products-container" id="products-container">
         {isProductListLoading ? (

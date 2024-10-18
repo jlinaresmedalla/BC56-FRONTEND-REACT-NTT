@@ -1,7 +1,8 @@
 import { calculateCartTotalAmount } from "@/helpers/cart.helpers";
-import { ShoppingCart } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/cart.hooks";
+import { Button } from "@/components/UI";
 import "./CartSection.css";
 
 const CART_HEADERS = ["Producto", "Nombre", "Cantidad", "Eliminar"];
@@ -30,18 +31,18 @@ export const CartSection = () => {
               </span>
               <span className="cell subtitle">{title}</span>
               <span className="cell">
-                <button className="primary-button" onClick={() => decrementQuantity(id)} disabled={quantity === 1}>
-                  -
-                </button>
+                <Button dimension="icon" onClick={() => decrementQuantity(id)} disabled={quantity === 1}>
+                  <Minus />
+                </Button>
                 <span className="cart-row-quantity subtitle">{quantity}</span>
-                <button className="primary-button" onClick={() => incrementQuantity(id)}>
-                  +
-                </button>
+                <Button dimension="icon" onClick={() => incrementQuantity(id)}>
+                  <Plus />
+                </Button>
               </span>
               <span className="cart-row-action cell">
-                <button className="danger-button" onClick={() => removeCartProduct(id)}>
-                  Eliminar
-                </button>
+                <Button variant="danger" onClick={() => removeCartProduct(id)}>
+                  <Trash2 />
+                </Button>
               </span>
             </div>
           ))}
@@ -53,9 +54,9 @@ export const CartSection = () => {
         <div className="cart-empty-message">
           <ShoppingCart size={150} />
           <span className="title">Carrito vacío</span>
-          <button className="secondary-button" onClick={() => navigate("/#products-section")}>
+          <Button variant="secondary" onClick={() => navigate("/#products-section")}>
             Ir de compras!
-          </button>
+          </Button>
         </div>
       )}
     </section>

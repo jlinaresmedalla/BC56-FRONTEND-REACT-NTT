@@ -1,0 +1,57 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input.medium {
+  padding: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+
+.input.small {
+  padding: 0.5rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+.input.primary:focus {
+  border-color: var(--primary-color);
+}
+
+.input.secondary:focus {
+  border-color: var(--secondary-color);
+}
+
+.input.danger {
+  border-color: var(--danger-color);
+}
+
+.input.disabled {
+  border-color: var(--ghost-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-error {
+  color: var(--danger-color);
+  font-size: 0.75rem;
+  padding: 0 0.5rem;
+  font-weight: 500;
+}
+
+.input:hover {
+  box-shadow: var(--shadow2);
+  opacity: 0.9;
+}
+
+.input:focus {
+  box-shadow: var(--shadow1);
+}

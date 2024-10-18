@@ -1,3 +1,4 @@
+import { Button } from "@/components/UI";
 import "./BannerSection.css";
 
 export const BannerSection = () => {
@@ -12,7 +13,7 @@ export const BannerSection = () => {
             inigualables!
           </h5>
           <a href="#products-section">
-            <button className="primary-button">Compra Ahora!</button>
+            <Button>Compra Ahora!</Button>
           </a>
         </div>
         <div>

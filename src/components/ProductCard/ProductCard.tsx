@@ -1,6 +1,7 @@
 import { Product } from "@/interfaces";
 import { Star } from "lucide-react";
 import { useCart } from "@/hooks/cart.hooks";
+import { Button } from "../UI";
 import "./ProductCard.css";
 
 export const ProductCard = ({ id, title, category, price, rating, thumbnail }: Product) => {
@@ -26,9 +27,7 @@ export const ProductCard = ({ id, title, category, price, rating, thumbnail }: P
         </div>
       </div>
       <hr />
-      <button className="primary-button" onClick={addCartProduct({ id, price, title, thumbnail })}>
-        Agregar al carrito
-      </button>
+      <Button onClick={addCartProduct({ id, price, title, thumbnail })}>Agregar al carrito</Button>
     </div>
   );
 };

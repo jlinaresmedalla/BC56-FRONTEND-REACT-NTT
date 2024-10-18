@@ -1,10 +1,12 @@
 import { CircleUserRound, ShoppingCart } from "lucide-react";
 import { getCartCount } from "@/helpers/cart.helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/cart.hooks";
+import { Button } from "../UI";
 import "./Header.css";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const { cartState } = useCart();
   const cartCount = getCartCount(cartState);
 
@@ -15,12 +17,12 @@ export const Header = () => {
         <span>NTT Store </span>
       </Link>
       <nav>
-        <div className="chip primary-bg-color">
+        <Button dimension="chip">
           Profile <CircleUserRound size={20} color="#ffffff" />
-        </div>
-        <Link to={"/resumen"} className="chip secondary-bg-color">
+        </Button>
+        <Button variant="secondary" dimension="chip" onClick={() => navigate("/resumen")}>
           <span id="cart-count">{cartCount}</span> <ShoppingCart size={20} color="#ffffff" strokeWidth={2.5} />
-        </Link>
+        </Button>
       </nav>
     </header>
   );

@@ -1,0 +1,58 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.select {
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.select:hover {
+  box-shadow: var(--shadow2);
+  opacity: 0.9;
+}
+
+.select:focus {
+  box-shadow: var(--shadow1);
+}
+
+.select.medium {
+  padding: 0.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+
+.select.small {
+  padding: 0.5rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+.select.primary:focus {
+  border-color: var(--primary-color);
+}
+
+.select.secondary:focus {
+  border-color: var(--secondary-color);
+}
+
+.select.danger {
+  border-color: var(--danger-color);
+}
+
+.select.disabled {
+  border-color: var(--ghost-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.select-error {
+  color: var(--danger-color);
+  font-size: 0.75rem;
+  padding: 0 0.5rem;
+  font-weight: 500;
+}

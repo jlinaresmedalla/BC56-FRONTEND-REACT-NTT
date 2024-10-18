@@ -11,7 +11,7 @@
   gap: 0.5rem;
 }
 
-.products-section > .filters > input {
+.search-input {
   display: flex;
   flex-grow: 1;
 }
@@ -30,8 +30,8 @@
     flex-direction: column;
   }
 
-  .products-section > .filters > input,
-  .products-section > .filters > select {
+  .search-input,
+  .search-category {
     width: 100%;
   }
 
