@@ -16,7 +16,9 @@ export const CartSection = () => {
       <div className="cart-headers">
         <span className="cell desktop-hide title">Resumen de carrito</span>
         {CART_HEADERS.map((header) => (
-          <span className="cell mobile-hide title">{header}</span>
+          <span className="cell mobile-hide title" key={header}>
+            {header}
+          </span>
         ))}
       </div>
       {cartState.length ? (

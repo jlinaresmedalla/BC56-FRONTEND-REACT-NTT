@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { MarketPlaceViewProps } from "./MarketPlace.interface";
+import { useCategoryListQuery, useProductListQuery } from "@/hooks/fetch.hooks";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { Loader } from "@/components";
 import { SearchX } from "lucide-react";
 import "./MarketPlace.css";
 
-export const MarketPlaceView = ({
-  categoryList,
-  setSelectedCategory,
-  selectedCategory,
-  producList,
-  isProductListLoading,
-}: MarketPlaceViewProps) => {
+export const MarketPlace = () => {
   const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
+  const { data: categoryList } = useCategoryListQuery();
+  const { data: producList, isLoading: isProductListLoading } = useProductListQuery(selectedCategory);
 
   const filteredProductList = producList?.filter((product) =>
     product?.title?.toLowerCase().includes(searchInput.toLowerCase()),

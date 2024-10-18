@@ -1,3 +1,4 @@
+import { getCategories, getProducts, getProductsByCategory } from "@/api/dummyjsonApi";
 import { DependencyList, useEffect, useState } from "react";
 
 export const useFetch = <T>(query: () => Promise<T>, dependencies: DependencyList = []) => {
@@ -25,3 +26,10 @@ export const useFetch = <T>(query: () => Promise<T>, dependencies: DependencyLis
 
   return { data, isLoading, error };
 };
+
+export const useProductListQuery = (category: string = "") => {
+  const getProductList = category ? getProductsByCategory(category) : getProducts;
+  return useFetch(getProductList, [category]);
+};
+
+export const useCategoryListQuery = () => useFetch(getCategories);

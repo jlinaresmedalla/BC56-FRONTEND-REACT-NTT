@@ -1,5 +1,5 @@
 import { Category, CategoryApiResponse, Product, ProductListApiResponse } from "@/interfaces";
-import { getCategoryListMapper, getProductListMapper } from "@/utils/mappings/request.mapper";
+import { getCategoryListMapper, getProductListMapper } from "@/mappings/request.mapper";
 
 const API_URL = "https://dummyjson.com";
 

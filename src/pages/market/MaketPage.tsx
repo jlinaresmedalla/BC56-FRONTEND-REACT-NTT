@@ -1,4 +1,4 @@
-import MarketPlaceController from "./MarketPlace/MarketPlaceController";
+import { MarketPlace } from "./MarketPlace/MarketPlace";
 import { BannerSection } from "./BannerSection/BannerSection";
 import "./MarketPage.css";
 
@@ -6,7 +6,7 @@ export const MarketPage = () => {
   return (
     <main>
       <BannerSection />
-      <MarketPlaceController />
+      <MarketPlace />
     </main>
   );
 };
