@@ -1,0 +1,23 @@
+.form-section {
+  margin: 2rem 0;
+}
+
+.shipping-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow3);
+}
+
+.shipping-form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.shipping-form-field {
+  flex: 1 1 30%;
+}

@@ -4,6 +4,7 @@
   border: 1px solid var(--primary-color);
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: var(--shadow3);
 }
 
 .cell {
