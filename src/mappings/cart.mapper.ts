@@ -7,12 +7,12 @@ export const getShippingInfoMapper = (shippingFormValues: ShippingFormValues, ca
   const compra = cart.map(({ id, quantity }) => ({ id, quantity }));
 
   return {
-    nombres: firstName,
-    apellidos: lastName,
+    nombres: firstName.trim(),
+    apellidos: lastName.trim(),
     distrito: district,
-    direccion: address,
-    referencia: reference,
-    celular: phone,
+    direccion: address.trim(),
+    referencia: reference.trim(),
+    celular: +phone.trim(),
     compra,
   };
 };

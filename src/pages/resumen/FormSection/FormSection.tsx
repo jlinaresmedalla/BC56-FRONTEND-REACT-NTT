@@ -136,10 +136,12 @@ export const FormSection = () => {
       </form>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <div className="succes-message-container">
-          <h3>
+          <h3 className="primary-text-color">
             <center>Su compra se realizó con exito! 🎉</center>
           </h3>
-          <Button onClick={() => navigate("/#products-section")}>Aceptar</Button>
+          <Button variant="secondary" onClick={() => navigate("/#products-section")}>
+            Aceptar
+          </Button>
         </div>
       </Modal>
     </section>
