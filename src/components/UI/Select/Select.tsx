@@ -1,4 +1,5 @@
 import { SelectHTMLAttributes } from "react";
+import { HelperText } from "../HelperText/HelperText";
 import "./Select.css";
 
 interface SelectProps<T> extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -39,7 +40,7 @@ export const Select = <T,>({
           </option>
         ))}
       </select>
-      {error && <p className="select-error">{error}</p>}
+      {error && <HelperText message={error} variant="danger" />}
     </div>
   );
 };

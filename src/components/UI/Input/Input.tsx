@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+import { HelperText } from "../HelperText/HelperText";
 import "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -22,7 +23,7 @@ export const Input = ({
   return (
     <div className={customContainerClass}>
       <input className={customClassname} {...props} />
-      {error && <p className="input-error">{error}</p>}
+      {error && <HelperText message={error} variant="danger" />}
     </div>
   );
 };

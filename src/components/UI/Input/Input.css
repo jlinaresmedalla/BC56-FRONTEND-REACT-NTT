@@ -34,17 +34,14 @@
   border-color: var(--danger-color);
 }
 
+.input.danger:focus {
+  border-color: var(--danger-color);
+}
+
 .input.disabled {
   border-color: var(--ghost-color);
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.input-error {
-  color: var(--danger-color);
-  font-size: 0.75rem;
-  padding: 0 0.5rem;
-  font-weight: 500;
 }
 
 .input:hover {

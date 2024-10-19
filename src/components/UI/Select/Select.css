@@ -44,15 +44,12 @@
   border-color: var(--danger-color);
 }
 
+.select.danger:focus {
+  border-color: var(--danger-color);
+}
+
 .select.disabled {
   border-color: var(--ghost-color);
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.select-error {
-  color: var(--danger-color);
-  font-size: 0.75rem;
-  padding: 0 0.5rem;
-  font-weight: 500;
 }
