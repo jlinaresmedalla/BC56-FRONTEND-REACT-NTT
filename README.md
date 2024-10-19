@@ -29,20 +29,24 @@ npm run dev
 │
 ├── /components       # Componentes reutilizables
 │
+├── /contexts         # Configuracion de contextos, reducers y providers para la app.
+│
+├── /helpers          # Métodos y funciones para responsabilidades específicas
+│
 ├── /hooks            # Functionalidades y acciones
 │
 ├── /interfaces       # Interfaces y tipos
 │
+├── /mappings         # Mappers para dar formato a la data
+│
 ├── /pages            # Paginas con sus respectivos modulos y/o secciones.
 │
-├── /providers        # Configuracion de contextos y providers para la app.
+├── /routes           # Rutas de la aplicación
 │
 ├── /styles           # Estilos en general
 │
 ├── /utils            # Carpeta para métodos y/o constantes de ayuda
-│   ├── /constants    # Constantes globales
-│   ├── /helpers      # Métodos y funciones para responsabilidades específicas
-│   └── /mappings     # Mappers para las respuestas del servidor
+│   └── location.ts   # Archivo para cargar distritos (segun requisitos de ppt)
 │
 ├── App.ts            # Se dejó la base para implementar rutas en el futuro
 │
@@ -51,12 +55,13 @@ npm run dev
 
 ## Criterios
 
-### Semana 2 - React-fundamentos
+### Semana 2 - React-implementacion
 
 Para este entregable se consideró lo siguiente:
 
+- El acceso al carrito será mediante el boton con icono de cart.
+- Se agregaron componentes en base a un design system / atomic design.
 - Se reestructuraron las carpetas para utilizar React.
-- Se configuró eslint y prettier como base para un código organizado y facilitar el desarrollo.
-- Se añadió un store para el manejo de diferentes contextos, en este caso para el contador del cart, dejando la base para añadir las siguientes funcionalidades.
-- Se añadió librería de iconos.
-- Las pagínas contienes subcarpetas que son los modulos que se mostraran en la página, los cuales contienen sus propios estilos y tipos. Esto para evitar que componentes estaticos como el banner no sea afectado por los rerenders a causa de los estados en marketplace.
+- Se agregó el estado global al carrito, ya que persiste a través de las páginas.
+- Los productos, categorias y distritos, que son data externa, decidí dejarlos en hooks que se usaran y ejecutaran solo cuando los módulos sean usados.
+- Se agregaron todas las funcionalidades requeridas de este entregable.
