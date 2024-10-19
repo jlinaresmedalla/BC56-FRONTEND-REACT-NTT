@@ -20,6 +20,9 @@ export const useCart = () => {
   const decrementQuantity = (id: number) => {
     dispatch({ type: CartActionType.DECREMENT_QUANTITY, payload: id });
   };
+  const resetCart = () => {
+    dispatch({ type: CartActionType.SET_CART, payload: [] });
+  };
 
   const addCartProduct = (product: CartItem) => () => {
     const productExist = cartState.some((item) => item.id === product.id);
@@ -30,5 +33,5 @@ export const useCart = () => {
     addNewProduct(product);
   };
 
-  return { cartState, addCartProduct, removeCartProduct, incrementQuantity, decrementQuantity };
+  return { cartState, addCartProduct, removeCartProduct, incrementQuantity, decrementQuantity, resetCart };
 };

@@ -1,9 +1,10 @@
-import { Button, HelperText, Input, Select } from "@/components/UI";
+import { Button, Input, Select } from "@/components/UI";
 import { useForm } from "@/hooks/form.hooks";
 import { shippingFormSchema } from "./FormSection.schema";
-
+import { useCart } from "@/hooks/cart.hooks";
+import { getShippingInfoMapper } from "@/mappings/cart.mapper";
+import { useDistrictListQuery } from "@/hooks/fetch.hooks";
 import "./FormSection.css";
-import { useCartContext } from "@/hooks/cart.hooks";
 
 export interface ShippingFormValues {
   firstName: string;
@@ -24,15 +25,20 @@ const initialShippingFormvalues = {
 };
 
 export const FormSection = () => {
-  const { cartState } = useCartContext();
+  const { cartState, resetCart } = useCart();
+  const districtList = useDistrictListQuery();
   const { values, errors, touched, handleSubmit, handleChange, isSubmitting } = useForm<ShippingFormValues>({
     initialValues: initialShippingFormvalues,
+    resetOnSubmit: true,
     validationSchema: shippingFormSchema,
     onSubmit: (values) => {
-      console.log(values);
+      const body = getShippingInfoMapper(values, cartState);
+      console.log(body);
+      resetCart();
     },
-    resetOnSubmit: true,
   });
+
+  if (!cartState.length) return <></>;
 
   return (
     <section className="form-section">
@@ -67,7 +73,7 @@ export const FormSection = () => {
             <label className="title">Distrito*</label>
             <Select
               name="district"
-              options={[{ value: "Lima", label: "Lima" }]}
+              options={districtList}
               valueKey={"value"}
               labelKey={"label"}
               staticLabel="Selecciona tu distrito"
@@ -112,11 +118,6 @@ export const FormSection = () => {
             />
           </span>
         </div>
-        {!cartState.length && (
-          <center>
-            <HelperText variant="danger" dimension="medium" message={"El carrito está vacío"} />
-          </center>
-        )}
         <Button type="submit" disabled={isSubmitting}>
           Comprar
         </Button>

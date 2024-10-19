@@ -43,6 +43,11 @@ export const cartReducer = (state: Cart, action: CartAction): Cart => {
       return updatedState;
     }
 
+    case CartActionType.SET_CART: {
+      setPersistedCart(action.payload as Cart);
+      return action.payload as Cart;
+    }
+
     default:
       return state;
   }

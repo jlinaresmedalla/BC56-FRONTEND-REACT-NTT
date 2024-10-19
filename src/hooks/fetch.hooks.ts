@@ -1,4 +1,5 @@
 import { getCategories, getProducts, getProductsByCategory } from "@/api/dummyjsonApi";
+import { District } from "@/interfaces";
 import { DependencyList, useEffect, useState } from "react";
 
 export const useFetch = <T>(query: () => Promise<T>, dependencies: DependencyList = []) => {
@@ -33,3 +34,23 @@ export const useProductListQuery = (category: string = "") => {
 };
 
 export const useCategoryListQuery = () => useFetch(getCategories);
+
+export const useDistrictListQuery = () => {
+  const [districts, setDistricts] = useState<District[]>([]);
+
+  const readFile = async () => {
+    try {
+      const file = await import("../utils/location");
+      const districtList = file.districts.map((d) => ({ value: d.name, label: d.name }));
+      setDistricts(districtList);
+    } catch (error) {
+      console.error("Error al leer archivo", error);
+    }
+  };
+
+  useEffect(() => {
+    readFile();
+  }, []);
+
+  return districts;
+};

@@ -10,11 +10,12 @@ export enum CartActionType {
   INCREMENT_QUANTITY = "Imcrement quantity",
   DECREMENT_QUANTITY = "Decrement quantity",
   REMOVE_PRODUCT = "Remove cart product",
+  SET_CART = "Set cart",
 }
 
 export interface CartAction {
   type: CartActionType;
-  payload: number | CartItem;
+  payload: number | CartItem | Cart;
 }
 
 export interface CartContextProps {
