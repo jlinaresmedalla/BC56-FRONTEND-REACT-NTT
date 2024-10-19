@@ -1,10 +1,13 @@
-import { Button, Input, Select } from "@/components/UI";
+import { Button, HelperText, Input, Select } from "@/components/UI";
 import { useForm } from "@/hooks/form.hooks";
 import { shippingFormSchema } from "./FormSection.schema";
 import { useCart } from "@/hooks/cart.hooks";
 import { getShippingInfoMapper } from "@/mappings/cart.mapper";
 import { useDistrictListQuery } from "@/hooks/fetch.hooks";
+import { useModal } from "@/hooks/modal.hooks";
+import { Modal } from "@/components";
 import "./FormSection.css";
+import { useNavigate } from "react-router-dom";
 
 export interface ShippingFormValues {
   firstName: string;
@@ -25,25 +28,29 @@ const initialShippingFormvalues = {
 };
 
 export const FormSection = () => {
+  const navigate = useNavigate();
   const { cartState, resetCart } = useCart();
+  const { isModalOpen, openModal, closeModal } = useModal();
   const districtList = useDistrictListQuery();
+
   const { values, errors, touched, handleSubmit, handleChange, isSubmitting } = useForm<ShippingFormValues>({
     initialValues: initialShippingFormvalues,
-    resetOnSubmit: true,
     validationSchema: shippingFormSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, resetForm) => {
+      if (!cartState.length) return;
+
       const body = getShippingInfoMapper(values, cartState);
       console.log(body);
+      openModal();
       resetCart();
+      resetForm();
     },
   });
-
-  if (!cartState.length) return <></>;
 
   return (
     <section className="form-section">
       <form className="shipping-form" onSubmit={handleSubmit}>
-        <h3>
+        <h3 className="primary-text-color">
           <center>Información de envío</center>
         </h3>
         <div className="shipping-form-fields">
@@ -118,10 +125,23 @@ export const FormSection = () => {
             />
           </span>
         </div>
+        {!cartState.length && (
+          <center>
+            <HelperText variant="danger" dimension="medium" message={"El carrito está vacío"} />
+          </center>
+        )}
         <Button type="submit" disabled={isSubmitting}>
           Comprar
         </Button>
       </form>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <div className="succes-message-container">
+          <h3>
+            <center>Su compra se realizó con exito! 🎉</center>
+          </h3>
+          <Button onClick={() => navigate("/#products-section")}>Aceptar</Button>
+        </div>
+      </Modal>
     </section>
   );
 };
