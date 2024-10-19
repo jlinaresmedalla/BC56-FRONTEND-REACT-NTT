@@ -5,7 +5,7 @@ import { useCart } from "@/hooks/cart.hooks";
 import { Button } from "@/components/UI";
 import "./CartSection.css";
 
-const CART_HEADERS = ["Producto", "Nombre", "Cantidad", "Eliminar"];
+const CART_HEADERS = ["Producto", "Nombre", "Precio", "Cantidad", "Eliminar"];
 
 export const CartSection = () => {
   const { cartState, incrementQuantity, decrementQuantity, removeCartProduct } = useCart();
@@ -24,12 +24,17 @@ export const CartSection = () => {
       </div>
       {cartState.length ? (
         <div className="cart-rows-container">
-          {cartState.map(({ thumbnail, title, quantity, id }) => (
+          {cartState.map(({ thumbnail, title, quantity, id, price }) => (
             <div className="cart-row" key={id}>
               <span className="cell">
                 <img className="cart-row-image" src={thumbnail} alt={title} />
               </span>
-              <span className="cell subtitle">{title}</span>
+              <span className="cell subtitle">
+                <center>{title}</center>
+              </span>
+              <span className="cell subtitle">
+                <center>S/. {price} c/u</center>
+              </span>
               <span className="cell">
                 <Button dimension="icon" onClick={() => decrementQuantity(id)} disabled={quantity === 1}>
                   <Minus />
@@ -40,7 +45,7 @@ export const CartSection = () => {
                 </Button>
               </span>
               <span className="cart-row-action cell">
-                <Button variant="danger" onClick={() => removeCartProduct(id)}>
+                <Button variant="danger" dimension="small" onClick={() => removeCartProduct(id)}>
                   <Trash2 />
                 </Button>
               </span>

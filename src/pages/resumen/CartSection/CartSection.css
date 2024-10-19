@@ -9,7 +9,7 @@
 
 .cell {
   display: flex;
-  flex: 1 1 25%;
+  flex: 1 1 20%;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0.5rem;
@@ -58,7 +58,7 @@
 
 @media (max-width: 700px) {
   .cell {
-    flex: 1 1 50%;
+    flex: 1 1 30%;
   }
 
   .cart-row {
