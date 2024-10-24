@@ -12,8 +12,7 @@ export const useFetch = <T>(query: () => Promise<T>, dependencies: DependencyLis
     try {
       const response = await query();
       setData(response);
-    } catch (error) {
-      console.log(error);
+    } catch {
       setError(true);
     } finally {
       setIsLoading(false);
