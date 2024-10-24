@@ -1,5 +1,6 @@
 export default {
-  testEnvironment: "jest-environment-jsdom",
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
     "^.+\\.svg$": "jest-transformer-svg",
@@ -19,6 +20,8 @@ export default {
       },
     ],
   },
+  collectCoverage: true,
+  collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts", "!src/**/index.ts"],
   coverageThreshold: {
     global: {
       branches: 100,
