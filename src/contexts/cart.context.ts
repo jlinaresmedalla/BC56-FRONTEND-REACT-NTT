@@ -47,8 +47,5 @@ export const cartReducer = (state: Cart, action: CartAction): Cart => {
       setPersistedCart(action.payload as Cart);
       return action.payload as Cart;
     }
-
-    default:
-      return state;
   }
 };

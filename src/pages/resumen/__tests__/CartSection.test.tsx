@@ -13,9 +13,9 @@ jest.mock("react-router-dom", () => ({
 const renderComponent = async (): Promise<RenderResult> => {
   const component = await act(async () =>
     render(
-      <MemoryRouter initialEntries={["/"]}>
+      <MemoryRouter initialEntries={["/resumen"]}>
         <Routes>
-          <Route path="/" element={<CartSection />} />
+          <Route path="/resumen" element={<CartSection />} />
         </Routes>
       </MemoryRouter>,
     ),
@@ -23,7 +23,7 @@ const renderComponent = async (): Promise<RenderResult> => {
   return component;
 };
 
-describe("Marketplace section", () => {
+describe("CartSection module section", () => {
   it("render component", async () => {
     await renderComponent();
     expect(screen.getByText("Resumen de carrito")).toBeInTheDocument();
