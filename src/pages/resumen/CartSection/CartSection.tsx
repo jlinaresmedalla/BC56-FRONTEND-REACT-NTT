@@ -1,14 +1,15 @@
 import { calculateCartTotalAmount } from "@/helpers/cart.helpers";
 import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "@/hooks/cart.hooks";
+import { useCartContext } from "@/hooks/cart.hooks";
 import { Button } from "@/components/UI";
 import "./CartSection.css";
+import { decrementQuantity, incrementQuantity, removeCartProduct } from "@/actions/cart.actions";
 
 const CART_HEADERS = ["Producto", "Nombre", "Precio", "Cantidad", "Eliminar"];
 
 export const CartSection = () => {
-  const { cartState, incrementQuantity, decrementQuantity, removeCartProduct } = useCart();
+  const { cartState, dispatch } = useCartContext();
   const navigate = useNavigate();
   const totalAmount = calculateCartTotalAmount(cartState).toFixed(2);
 
@@ -36,16 +37,16 @@ export const CartSection = () => {
                 <center>S/. {price} c/u</center>
               </span>
               <span className="cell">
-                <Button dimension="icon" onClick={() => decrementQuantity(id)} disabled={quantity === 1}>
+                <Button dimension="icon" onClick={() => decrementQuantity(id, dispatch)} disabled={quantity === 1}>
                   <Minus />
                 </Button>
                 <span className="cart-row-quantity subtitle">{quantity}</span>
-                <Button dimension="icon" onClick={() => incrementQuantity(id)}>
+                <Button dimension="icon" onClick={() => incrementQuantity(id, dispatch)}>
                   <Plus />
                 </Button>
               </span>
               <span className="cart-row-action cell">
-                <Button variant="danger" dimension="small" onClick={() => removeCartProduct(id)}>
+                <Button variant="danger" dimension="small" onClick={() => removeCartProduct(id, dispatch)}>
                   <Trash2 />
                 </Button>
               </span>

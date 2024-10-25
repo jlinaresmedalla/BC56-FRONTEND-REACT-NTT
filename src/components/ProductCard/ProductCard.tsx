@@ -1,12 +1,22 @@
-import { Product } from "@/interfaces";
+import { FC } from "react";
+import { CartItem, Product } from "@/interfaces";
 import { Star } from "lucide-react";
-import { useCart } from "@/hooks/cart.hooks";
 import { Button } from "../UI";
 import "./ProductCard.css";
 
-export const ProductCard = ({ id, title, category, price, rating, thumbnail }: Product) => {
-  const { addCartProduct } = useCart();
+interface ProductCardProps extends Product {
+  handleAddButton: (p: CartItem) => void;
+}
 
+export const ProductCard: FC<ProductCardProps> = ({
+  id,
+  title,
+  category,
+  price,
+  rating,
+  thumbnail,
+  handleAddButton,
+}) => {
   return (
     <div className="product-card">
       <img src={thumbnail} alt={title} />
@@ -27,7 +37,7 @@ export const ProductCard = ({ id, title, category, price, rating, thumbnail }: P
         </div>
       </div>
       <hr />
-      <Button onClick={addCartProduct({ id, price, title, thumbnail })}>Agregar al carrito</Button>
+      <Button onClick={() => handleAddButton({ id, price, title, thumbnail })}>Agregar al carrito</Button>
     </div>
   );
 };

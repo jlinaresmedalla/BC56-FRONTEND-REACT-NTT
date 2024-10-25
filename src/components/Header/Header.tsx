@@ -1,13 +1,13 @@
 import { CircleUserRound, ShoppingCart } from "lucide-react";
 import { getCartCount } from "@/helpers/cart.helpers";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "@/hooks/cart.hooks";
+import { useCartContext } from "@/hooks/cart.hooks";
 import { Button } from "../UI";
 import "./Header.css";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { cartState } = useCart();
+  const { cartState } = useCartContext();
   const cartCount = getCartCount(cartState);
 
   return (

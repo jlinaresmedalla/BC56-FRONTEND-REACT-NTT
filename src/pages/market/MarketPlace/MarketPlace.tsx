@@ -4,9 +4,13 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { Loader } from "@/components";
 import { SearchX } from "lucide-react";
 import { Input, Select } from "@/components/UI";
+import { useCartContext } from "@/hooks/cart.hooks";
+import { CartItem } from "@/interfaces";
+import { addCartProduct } from "@/actions/cart.actions";
 import "./MarketPlace.css";
 
 export const MarketPlace = () => {
+  const { cartState, dispatch } = useCartContext();
   const [searchInput, setSearchInput] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
@@ -23,6 +27,10 @@ export const MarketPlace = () => {
 
   const handleCategorySelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
+  };
+
+  const handleAddButton = (product: CartItem) => {
+    addCartProduct(product, cartState, dispatch);
   };
 
   return (
@@ -52,7 +60,9 @@ export const MarketPlace = () => {
           <Loader size={100} />
         ) : (
           <>
-            {filteredProductList?.map((product) => <ProductCard key={product.id} {...product} />)}
+            {filteredProductList?.map((product) => (
+              <ProductCard key={product.id} {...product} handleAddButton={handleAddButton} />
+            ))}
             {!filteredProductList?.length && (
               <div>
                 <center>

@@ -1,13 +1,14 @@
 import { Button, HelperText, Input, Select } from "@/components/UI";
 import { useForm } from "@/hooks/form.hooks";
 import { shippingFormSchema } from "./FormSection.schema";
-import { useCart } from "@/hooks/cart.hooks";
+import { useCartContext } from "@/hooks/cart.hooks";
 import { getShippingInfoMapper } from "@/mappings/cart.mapper";
 import { useDistrictListQuery } from "@/hooks/fetch.hooks";
 import { useModal } from "@/hooks/modal.hooks";
 import { Modal } from "@/components";
-import "./FormSection.css";
 import { useNavigate } from "react-router-dom";
+import { resetCart } from "@/actions/cart.actions";
+import "./FormSection.css";
 
 export interface ShippingFormValues {
   firstName: string;
@@ -29,7 +30,7 @@ const initialShippingFormvalues = {
 
 export const FormSection = () => {
   const navigate = useNavigate();
-  const { cartState, resetCart } = useCart();
+  const { cartState, dispatch } = useCartContext();
   const { isModalOpen, openModal, closeModal } = useModal();
   const districtList = useDistrictListQuery();
 
@@ -42,7 +43,7 @@ export const FormSection = () => {
       const body = getShippingInfoMapper(values, cartState);
       console.log(body);
       openModal();
-      resetCart();
+      resetCart(dispatch);
       resetForm();
     },
   });

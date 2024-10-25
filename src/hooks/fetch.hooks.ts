@@ -39,7 +39,7 @@ export const useDistrictListQuery = () => {
 
   const readFile = async () => {
     try {
-      const file = await import("../utils/location");
+      const file = await import("@/utils/locations.json");
       const districtList = file.districts.map((d) => ({ value: d.name, label: d.name }));
       setDistricts(districtList);
     } catch (error) {
