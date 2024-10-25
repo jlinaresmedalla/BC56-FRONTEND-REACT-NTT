@@ -1,6 +1,6 @@
 import { Button, HelperText, Input, Select } from "@/components/UI";
 import { useForm } from "@/hooks/form.hooks";
-import { shippingFormSchema } from "./FormSection.schema";
+import { initialShippingFormvalues, shippingFormSchema } from "./FormSection.schema";
 import { useCartContext } from "@/hooks/cart.hooks";
 import { getShippingInfoMapper } from "@/mappings/cart.mapper";
 import { useDistrictListQuery } from "@/hooks/fetch.hooks";
@@ -18,15 +18,6 @@ export interface ShippingFormValues {
   reference: string;
   phone: string;
 }
-
-const initialShippingFormvalues = {
-  firstName: "",
-  lastName: "",
-  district: "",
-  address: "",
-  reference: "",
-  phone: "",
-};
 
 export const FormSection = () => {
   const navigate = useNavigate();

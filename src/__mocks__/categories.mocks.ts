@@ -1,4 +1,6 @@
-export const categoriesApiResponseMock = [
+import { Category, CategoryApiResponse } from "@/interfaces";
+
+export const categoriesApiResponseMock: CategoryApiResponse[] = [
   {
     slug: "beauty",
     name: "Beauty",
@@ -8,5 +10,16 @@ export const categoriesApiResponseMock = [
     slug: "fragrances",
     name: "Fragrances",
     url: "https://dummyjson.com/products/category/fragrances",
+  },
+];
+
+export const categoriesMock: Category[] = [
+  {
+    slug: "beauty",
+    name: "Beauty",
+  },
+  {
+    slug: "fragrances",
+    name: "Fragrances",
   },
 ];

@@ -30,3 +30,12 @@ export const shippingFormSchema = (values: ShippingFormValues) => {
 
   return errors;
 };
+
+export const initialShippingFormvalues = {
+  firstName: "",
+  lastName: "",
+  district: "",
+  address: "",
+  reference: "",
+  phone: "",
+};

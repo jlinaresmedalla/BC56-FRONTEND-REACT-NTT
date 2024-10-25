@@ -42,8 +42,8 @@ export const useDistrictListQuery = () => {
       const file = await import("@/utils/locations.json");
       const districtList = file.districts.map((d) => ({ value: d.name, label: d.name }));
       setDistricts(districtList);
-    } catch (error) {
-      console.error("Error al leer archivo", error);
+    } catch {
+      setDistricts([]);
     }
   };
 

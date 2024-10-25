@@ -1,4 +1,4 @@
-import { ProductListApiResponse } from "@/interfaces";
+import { Product, ProductListApiResponse } from "@/interfaces";
 
 export const productsApiResponseMock: ProductListApiResponse = {
   products: [
@@ -60,3 +60,23 @@ export const productsApiResponseMock: ProductListApiResponse = {
     },
   ],
 };
+
+export const productMock: Product = {
+  id: 1,
+  title: "Essence Mascara Lash Princess",
+  price: 9.99,
+  thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+  category: "beauty",
+  rating: 4.94,
+};
+
+export const productListMock: Product[] = [
+  {
+    id: 1,
+    title: "Essence Mascara Lash Princess",
+    price: 9.99,
+    thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+    category: "beauty",
+    rating: 4.94,
+  },
+];

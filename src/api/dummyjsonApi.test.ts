@@ -1,6 +1,5 @@
-import { getCategoryListMapper, getProductListMapper } from "@/mappings/request.mapper";
 import { getCategories, getProducts, getProductsByCategory } from "./dummyjsonApi";
-import { categoriesApiResponseMock, productsApiResponseMock } from "@/__mocks__";
+import { categoriesApiResponseMock, categoriesMock, productListMock, productsApiResponseMock } from "@/__mocks__";
 
 const mockfetch = (data: unknown, status = 200, ok = true): jest.Mock => {
   const fn = jest.fn().mockImplementationOnce(() => {
@@ -29,21 +28,21 @@ describe("Products and Categories request", () => {
     mockfetch(productsApiResponseMock);
 
     const result = await getProducts();
-    expect(result).toEqual(getProductListMapper(productsApiResponseMock));
+    expect(result).toEqual(productListMock);
   });
 
   it("should fetch and map categories correctly", async () => {
     mockfetch(categoriesApiResponseMock);
 
     const result = await getCategories();
-    expect(result).toEqual(getCategoryListMapper(categoriesApiResponseMock));
+    expect(result).toEqual(categoriesMock);
   });
 
   it("should fetch and map products by categories correctly", async () => {
     mockfetch(productsApiResponseMock);
 
     const result = await getProductsByCategory("beauty")();
-    expect(result).toEqual(getProductListMapper(productsApiResponseMock));
+    expect(result).toEqual(productListMock);
   });
 
   it("should not return response after call get products", async () => {
