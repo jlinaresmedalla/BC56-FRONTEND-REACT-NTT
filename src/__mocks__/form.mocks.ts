@@ -18,3 +18,16 @@ export const shippingFormBodyMock = {
   celular: 989898989,
   compra: [{ id: 1, quantity: 2 }],
 };
+
+export const invalidShippingFormValuesMock: ShippingFormValues = {
+  firstName:
+    "texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres",
+  lastName:
+    "texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres",
+  district: "Ate",
+  address:
+    "texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres",
+  phone: "989898989",
+  reference:
+    "texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres texto de mas de 100 caracteres",
+};
