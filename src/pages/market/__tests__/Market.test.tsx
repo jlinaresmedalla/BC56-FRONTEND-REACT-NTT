@@ -1,7 +1,15 @@
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { MarketPage } from "../MaketPage";
-import { render, RenderResult, screen } from "@testing-library/react";
+import { fireEvent, render, RenderResult, screen } from "@testing-library/react";
 import { act } from "react";
+import { useCategoryListQuery, useProductListQuery } from "@/hooks/fetch.hooks";
+import { useCartContext } from "@/hooks/cart.hooks";
+import { addCartProduct } from "@/actions/cart.actions";
+import { categoriesMock, productListMock, productMock } from "@/__mocks__";
+import { MarketPlace } from "../MarketPlace/MarketPlace";
+
+jest.mock("@/hooks/fetch.hooks");
+jest.mock("@/hooks/cart.hooks");
+jest.mock("@/actions/cart.actions");
 
 const mockNavigate = jest.fn();
 
@@ -15,7 +23,7 @@ const renderComponent = async (): Promise<RenderResult> => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Routes>
-          <Route path="/" element={<MarketPage />} />
+          <Route path="/" element={<MarketPlace />} />
         </Routes>
       </MemoryRouter>,
     ),
@@ -23,9 +31,71 @@ const renderComponent = async (): Promise<RenderResult> => {
   return component;
 };
 
-describe("Marketplace section", () => {
-  it("render component", async () => {
+describe("MarketPlace component", () => {
+  beforeEach(async () => {
+    (useCategoryListQuery as jest.Mock).mockReturnValue({
+      data: categoriesMock,
+    });
+
+    (useProductListQuery as jest.Mock).mockReturnValue({
+      data: productListMock,
+      isLoading: false,
+    });
+
+    (useCartContext as jest.Mock).mockReturnValue({
+      cartState: [],
+      dispatch: jest.fn(),
+    });
+
+    (addCartProduct as jest.Mock).mockClear();
     await renderComponent();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("renders marketplace with search and category filter", () => {
+    expect(screen.getByPlaceholderText("Buscar productos...")).toBeInTheDocument();
     expect(screen.getByText("Encuentra lo que buscas en nuestro catálogo")).toBeInTheDocument();
+    expect(screen.getByText("Todas las categorías")).toBeInTheDocument();
+    expect(screen.getByText(productMock.title)).toBeInTheDocument();
+  });
+
+  it("displays filtered products based on search input", async () => {
+    const searchInput = screen.getByPlaceholderText("Buscar productos...");
+
+    await act(async () => {
+      fireEvent.change(searchInput, { target: { value: "Laptop" } });
+    });
+
+    expect(screen.getByPlaceholderText("Buscar productos...")).toHaveValue("Laptop");
+    expect(screen.queryByText(productMock.title)).not.toBeInTheDocument();
+  });
+
+  it("displays no products message when search yields no results", async () => {
+    const searchInput = screen.getByPlaceholderText("Buscar productos...");
+
+    await act(async () => {
+      fireEvent.change(searchInput, { target: { value: "Nonexistent" } });
+    });
+    expect(screen.queryByText("Nonexistent")).toBeInTheDocument();
+  });
+
+  it("calls addCartProduct action when addButton is clicked", async () => {
+    const addButton = screen.getAllByRole("button", { name: "Agregar al carrito" })[0];
+
+    fireEvent.click(addButton);
+
+    expect(addCartProduct).toHaveBeenCalledTimes(1);
+  });
+
+  test("should change category when select", async () => {
+    const selectField = screen.getByRole("combobox");
+    expect(selectField).toBeInTheDocument();
+
+    fireEvent.change(selectField, { target: { value: "groceries" } });
+
+    expect(screen.getByText("Groceries")).toBeInTheDocument();
   });
 });

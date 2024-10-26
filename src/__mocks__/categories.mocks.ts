@@ -7,9 +7,9 @@ export const categoriesApiResponseMock: CategoryApiResponse[] = [
     url: "https://dummyjson.com/products/category/beauty",
   },
   {
-    slug: "fragrances",
-    name: "Fragrances",
-    url: "https://dummyjson.com/products/category/fragrances",
+    slug: "groceries",
+    name: "Groceries",
+    url: "https://dummyjson.com/products/category/groceries",
   },
 ];
 
@@ -19,7 +19,7 @@ export const categoriesMock: Category[] = [
     name: "Beauty",
   },
   {
-    slug: "fragrances",
-    name: "Fragrances",
+    slug: "groceries",
+    name: "Groceries",
   },
 ];

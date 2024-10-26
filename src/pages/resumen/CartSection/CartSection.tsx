@@ -37,16 +37,30 @@ export const CartSection = () => {
                 <center>S/. {price} c/u</center>
               </span>
               <span className="cell">
-                <Button dimension="icon" onClick={() => decrementQuantity(id, dispatch)} disabled={quantity === 1}>
+                <Button
+                  dimension="icon"
+                  onClick={() => decrementQuantity(id, dispatch)}
+                  disabled={quantity === 1}
+                  data-testid="decrementQuantityBtn"
+                >
                   <Minus />
                 </Button>
                 <span className="cart-row-quantity subtitle">{quantity}</span>
-                <Button dimension="icon" onClick={() => incrementQuantity(id, dispatch)}>
+                <Button
+                  dimension="icon"
+                  onClick={() => incrementQuantity(id, dispatch)}
+                  data-testid="incrementQuantityBtn"
+                >
                   <Plus />
                 </Button>
               </span>
               <span className="cart-row-action cell">
-                <Button variant="danger" dimension="small" onClick={() => removeCartProduct(id, dispatch)}>
+                <Button
+                  variant="danger"
+                  dimension="small"
+                  onClick={() => removeCartProduct(id, dispatch)}
+                  data-testid="removeCartProductBtn"
+                >
                   <Trash2 />
                 </Button>
               </span>

@@ -61,15 +61,6 @@ export const productsApiResponseMock: ProductListApiResponse = {
   ],
 };
 
-export const productMock: Product = {
-  id: 1,
-  title: "Essence Mascara Lash Princess",
-  price: 9.99,
-  thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
-  category: "beauty",
-  rating: 4.94,
-};
-
 export const productListMock: Product[] = [
   {
     id: 1,
@@ -80,3 +71,5 @@ export const productListMock: Product[] = [
     rating: 4.94,
   },
 ];
+
+export const productMock: Product = productListMock[0];
