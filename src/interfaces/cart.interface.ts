@@ -5,7 +5,7 @@ export type CartItem = Pick<Product, "id" | "title" | "price" | "thumbnail"> & {
 
 export type Cart = CartItem[];
 
-export enum CartActionType {
+export const enum CartActionType {
   ADD_PRODUCT = "Add cart product",
   INCREMENT_QUANTITY = "Imcrement quantity",
   DECREMENT_QUANTITY = "Decrement quantity",
