@@ -1,15 +1,12 @@
 import { CircleUserRound, ShoppingCart } from "lucide-react";
-import { getCartCount } from "@/helpers/cart.helpers";
-import { Link, useNavigate } from "react-router-dom";
-import { useCartContext } from "@/hooks/cart.hooks";
+import { Link } from "react-router-dom";
 import { Button } from "../UI";
 import { PrivateRoutes } from "@/enums";
+import { useHeaderController } from "./hooks/useHeaderController";
 import "./Header.css";
 
 export const Header = () => {
-  const navigate = useNavigate();
-  const { cartState } = useCartContext();
-  const cartCount = getCartCount(cartState);
+  const { cartCount, fullName, handleCartButton, handleLogOutButton } = useHeaderController();
 
   return (
     <header>
@@ -18,11 +15,19 @@ export const Header = () => {
         <span className="mobile-hide">NTT Store </span>
       </Link>
       <nav>
-        <Button dimension="chip">
-          Profile <CircleUserRound size={20} color="#ffffff" />
-        </Button>
-        <Button variant="secondary" dimension="chip" onClick={() => navigate(PrivateRoutes.Resumen)}>
+        <span className="header-user-info mobile-hide">
+          <span className="title">
+            Bienvenido <span className="secondary-text-color">{fullName}</span>
+          </span>
+          <span className="subtitle header-log-out" onClick={handleLogOutButton}>
+            Cerrar sesión
+          </span>
+        </span>
+        <Button variant="secondary" dimension="chip" onClick={handleCartButton}>
           <span id="cart-count">{cartCount}</span> <ShoppingCart size={20} color="#ffffff" strokeWidth={2.5} />
+        </Button>
+        <Button dimension="chip" className="desktop-hide">
+          Profile <CircleUserRound size={20} color="#ffffff" />
         </Button>
       </nav>
     </header>
