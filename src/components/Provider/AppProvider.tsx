@@ -1,6 +1,7 @@
-import { CartProvider } from "@/contexts/CartProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FC, PropsWithChildren } from "react";
+import { CartProvider } from "@/contexts/CartProvider";
+import { AuthProvider } from "@/contexts/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -11,6 +12,8 @@ const queryClient = new QueryClient({
 
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
   <QueryClientProvider client={queryClient}>
-    <CartProvider>{children}</CartProvider>
+    <AuthProvider>
+      <CartProvider>{children}</CartProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );

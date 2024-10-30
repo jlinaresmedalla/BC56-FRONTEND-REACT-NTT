@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginValidationSchema } from "../Loginpage.schema";
 import { clearSpaces } from "@/utils/app.utils";
+import { useAuthContext } from "@/hooks/auth.hooks";
+import { setAuthInfo } from "@/actions/auth.actions";
 
 export const useLoginPageController = () => {
   const navigate = useNavigate();
+  const { dispatch } = useAuthContext();
 
   const { mutate, isPending } = useMutation({ mutationFn: authRequest });
 
@@ -18,7 +21,9 @@ export const useLoginPageController = () => {
       const body = { username: clearSpaces(username), password: clearSpaces(password) };
 
       mutate(body, {
-        onSuccess: () => {
+        onSuccess: (data) => {
+          setAuthInfo(data, dispatch);
+
           toast.success("Inicio de sesión exitoso");
           navigate("/market");
         },

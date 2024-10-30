@@ -3,7 +3,7 @@ import { getCartCount } from "@/helpers/cart.helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { useCartContext } from "@/hooks/cart.hooks";
 import { Button } from "../UI";
-import { PrivateRoutes } from "@/constants/routes.constants";
+import { PrivateRoutes } from "@/enums";
 import "./Header.css";
 
 export const Header = () => {
@@ -15,7 +15,7 @@ export const Header = () => {
     <header>
       <Link to={PrivateRoutes.Dashboard} className="logo-container">
         <img className="logo-img" src="/src/assets/brand/shopping-bag.png" alt="brand_logo" />
-        <span>NTT Store </span>
+        <span className="mobile-hide">NTT Store </span>
       </Link>
       <nav>
         <Button dimension="chip">

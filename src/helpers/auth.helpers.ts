@@ -1,8 +1,9 @@
-import { LocalStorageKeys } from "@/constants/localStorage.constants";
-import { getFromLocalStorage } from "@/services/localStorageService";
+import { LocalStorageKeys } from "@/enums/localStorage.enums";
+import { AuthInfo } from "@/interfaces";
+import { getFromLocalStorage, saveToLocalStorage } from "@/services/localStorageService";
 
-export const getAccessTokenFromLocalStorage = getFromLocalStorage(LocalStorageKeys.AccessToken);
+export const getAuthSessionFromLocalStorage = (): AuthInfo =>
+  JSON.parse(getFromLocalStorage(LocalStorageKeys.AuthSession)!) || {};
 
-export const getRefreshTokenFromLocalStorage = getFromLocalStorage(LocalStorageKeys.RefreshToken);
-
-export const getUserFromLocalStorage = getFromLocalStorage(LocalStorageKeys.User);
+export const setAuthSessionToLocalStorage = (session: AuthInfo) =>
+  saveToLocalStorage(LocalStorageKeys.AuthSession, JSON.stringify(session));

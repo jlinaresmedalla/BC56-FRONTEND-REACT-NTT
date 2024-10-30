@@ -63,5 +63,3 @@ export const authRequest = async (body: Credentials): Promise<AuthInfo> => {
     throw Error("Hubo un error al cargar los productos por categoría del servidor");
   }
 };
-
-export const getUser = () => {};

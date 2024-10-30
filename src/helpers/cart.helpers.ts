@@ -1,7 +1,10 @@
+import { LocalStorageKeys } from "@/enums";
+import { getFromLocalStorage, saveToLocalStorage } from "@/services/localStorageService";
 import { Cart } from "@/interfaces";
 
-export const getPersistedCart = (): Cart => JSON.parse(localStorage.getItem("cart")!) || [];
-export const setPersistedCart = (cart: Cart) => localStorage.setItem("cart", JSON.stringify(cart));
+export const getPersistedCart = (): Cart => JSON.parse(getFromLocalStorage(LocalStorageKeys.Cart)!) || [];
+
+export const setPersistedCart = (cart: Cart) => saveToLocalStorage(LocalStorageKeys.Cart, JSON.stringify(cart));
 
 export const getCartCount = (cart: Cart): number =>
   cart.reduce((cartCounter, product) => {

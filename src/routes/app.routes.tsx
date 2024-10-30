@@ -1,5 +1,5 @@
 import { AuthHoc, Layout } from "@/components";
-import { PrivateRoutes, PublicRoutes } from "@/constants/routes.constants";
+import { PrivateRoutes, PublicRoutes } from "@/enums";
 import { LoginPage, MarketPage, ResumenPage } from "@/pages";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 

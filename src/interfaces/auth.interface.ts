@@ -1,3 +1,6 @@
+import { AuthInfoActionType } from "@/enums";
+import { Dispatch } from "react";
+
 export interface AuthApiResponse {
   id: number;
   username: string;
@@ -21,4 +24,14 @@ export interface AuthInfo {
 export interface Credentials {
   username: string;
   password: string;
+}
+
+export interface AuthInfoAction {
+  type: AuthInfoActionType;
+  payload: AuthInfo;
+}
+
+export interface AuthInfoContextProps {
+  authInfoState: AuthInfo;
+  dispatch: Dispatch<AuthInfoAction>;
 }

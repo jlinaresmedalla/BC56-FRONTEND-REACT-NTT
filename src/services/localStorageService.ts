@@ -1,9 +1,5 @@
-export const saveToLocalStorage = (key: string, value: string | object | number) =>
-  localStorage.setItem(key, JSON.stringify(value));
+export const saveToLocalStorage = (key: string, value: string) => localStorage.setItem(key, value);
 
-export const getFromLocalStorage = (key: string): string | object | number | null => {
-  const value = localStorage.getItem(key);
-  return value ?? null;
-};
+export const getFromLocalStorage = (key: string) => localStorage.getItem(key);
 
 export const removeFromLocalStorage = (key: string) => localStorage.removeItem(key);
