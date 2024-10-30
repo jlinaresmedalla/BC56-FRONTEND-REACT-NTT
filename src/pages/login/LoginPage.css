@@ -13,7 +13,6 @@
   border-radius: 1rem;
   box-shadow: var(--shadow3);
   overflow: hidden;
-  animation: fadeIn 0.5s ease-out;
 }
 
 .login-form {
@@ -61,14 +60,5 @@
 @media (max-width: 700px) {
   .login-form {
     padding: 1rem;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

@@ -3,6 +3,7 @@ import { getCartCount } from "@/helpers/cart.helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { useCartContext } from "@/hooks/cart.hooks";
 import { Button } from "../UI";
+import { PrivateRoutes } from "@/constants/routes.constants";
 import "./Header.css";
 
 export const Header = () => {
@@ -12,7 +13,7 @@ export const Header = () => {
 
   return (
     <header>
-      <Link to={"/"} className="logo-container">
+      <Link to={PrivateRoutes.Dashboard} className="logo-container">
         <img className="logo-img" src="/src/assets/brand/shopping-bag.png" alt="brand_logo" />
         <span>NTT Store </span>
       </Link>
@@ -20,7 +21,7 @@ export const Header = () => {
         <Button dimension="chip">
           Profile <CircleUserRound size={20} color="#ffffff" />
         </Button>
-        <Button variant="secondary" dimension="chip" onClick={() => navigate("/resumen")}>
+        <Button variant="secondary" dimension="chip" onClick={() => navigate(PrivateRoutes.Resumen)}>
           <span id="cart-count">{cartCount}</span> <ShoppingCart size={20} color="#ffffff" strokeWidth={2.5} />
         </Button>
       </nav>

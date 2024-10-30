@@ -5,3 +5,4 @@ export * from "./Loader/Loader";
 export * from "./Layout/Layout";
 export * from "./Modal/Modal";
 export * from "./Provider/AppProvider";
+export * from "./AuthHoc/AuthHoc";

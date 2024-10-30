@@ -1,16 +1,17 @@
-import { Layout } from "@/components";
+import { AuthHoc, Layout } from "@/components";
+import { PrivateRoutes, PublicRoutes } from "@/constants/routes.constants";
 import { LoginPage, MarketPage, ResumenPage } from "@/pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 const PageRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" Component={LoginPage} />
-        <Route Component={Layout}>
-          <Route path="/" Component={MarketPage} />
-          <Route path="/resumen" Component={ResumenPage} />
-          <Route path="*" element={<div>Not Found ...</div>} />
+        <Route path={PublicRoutes.Login} Component={LoginPage} />
+        <Route path="*" element={<Navigate to={PrivateRoutes.Dashboard} replace />} />
+        <Route element={AuthHoc(Layout)}>
+          <Route path={PrivateRoutes.Dashboard} Component={MarketPage} />
+          <Route path={PrivateRoutes.Resumen} Component={ResumenPage} />
         </Route>
       </Routes>
     </BrowserRouter>
