@@ -1,5 +1,6 @@
 import { Cart } from "@/interfaces";
 import { ShippingFormValues } from "@/pages/resumen/FormSection/FormSection";
+import { clearSpaces } from "@/utils/app.utils";
 
 export const getShippingInfoMapper = (shippingFormValues: ShippingFormValues, cart: Cart) => {
   const { firstName, lastName, district, address, phone, reference } = shippingFormValues;
@@ -7,12 +8,12 @@ export const getShippingInfoMapper = (shippingFormValues: ShippingFormValues, ca
   const compra = cart.map(({ id, quantity }) => ({ id, quantity }));
 
   return {
-    nombres: firstName.trim(),
-    apellidos: lastName.trim(),
+    nombres: clearSpaces(firstName),
+    apellidos: clearSpaces(lastName),
     distrito: district,
-    direccion: address.trim(),
-    referencia: reference.trim(),
-    celular: +phone.trim(),
+    direccion: clearSpaces(address),
+    referencia: clearSpaces(reference),
+    celular: +clearSpaces(phone),
     compra,
   };
 };

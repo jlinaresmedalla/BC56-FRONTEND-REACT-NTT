@@ -7,7 +7,7 @@ const App = () => {
   return (
     <AppProvider>
       <PageRoutes />
-      <ToastContainer />
+      <ToastContainer theme="colored" />
     </AppProvider>
   );
 };
