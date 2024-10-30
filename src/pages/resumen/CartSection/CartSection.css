@@ -18,7 +18,7 @@
 .cart-headers {
   display: flex;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--white-color);
 }
 
 .cart-rows-container {

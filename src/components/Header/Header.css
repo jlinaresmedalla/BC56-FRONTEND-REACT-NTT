@@ -1,11 +1,18 @@
 header {
-  display: flex;
   max-width: 1440px;
   margin: auto;
   padding: 0 1rem;
+  background-color: var(--white-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.toolbar {
+  display: flex;
   justify-content: space-between;
-  height: 5rem;
   background: var(--gradient-bg-2);
+  height: 5rem;
 }
 
 .logo-container {
@@ -43,4 +50,11 @@ nav {
 
 .header-log-out:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  header {
+    position: sticky;
+    top: 0;
+  }
 }

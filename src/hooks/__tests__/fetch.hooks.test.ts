@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { useDistrictListQuery, useFetch } from "../fetch.hooks";
+import { useDistrictListQuery } from "../useDistrictListQuery";
 
 const renderUseFetchHook = async (query: () => Promise<unknown>) => {
   const results = act(async () => renderHook(() => useFetch(query)));

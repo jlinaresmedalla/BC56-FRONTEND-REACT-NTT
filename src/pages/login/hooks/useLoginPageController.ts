@@ -7,6 +7,7 @@ import { loginValidationSchema } from "../Loginpage.schema";
 import { clearSpaces } from "@/utils/app.utils";
 import { useAuthContext } from "@/hooks/auth.hooks";
 import { setAuthInfo } from "@/actions/auth.actions";
+import { PrivateRoutes } from "@/enums";
 
 export const useLoginPageController = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const useLoginPageController = () => {
           setAuthInfo(data, dispatch);
 
           toast.success("Inicio de sesión exitoso");
-          navigate("/market");
+          navigate(PrivateRoutes.Dashboard);
         },
         onError: () => {
           toast.error("Credenciales inválidas");

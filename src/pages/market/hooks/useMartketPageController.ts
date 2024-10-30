@@ -1,9 +1,11 @@
 import { addCartProduct } from "@/actions/cart.actions";
 import { useCartContext } from "@/hooks/cart.hooks";
-import { useCategoryListQuery, useProductListQuery } from "@/hooks/fetch.hooks";
+import { useCategoryListQuery } from "@/hooks/useCategoryListQuery";
 import { usePagination } from "@/hooks/usePagination";
+import { useProductListQuery } from "@/hooks/useProductListQuery";
 import { CartItem } from "@/interfaces";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ItemsPerPage = 8;
 
@@ -35,6 +37,7 @@ export const useMarketPageController = () => {
 
   const handleAddButton = (product: CartItem) => {
     addCartProduct(product, cartState, dispatch);
+    toast.info(`${product.title} agregado al carrito`);
   };
 
   return {

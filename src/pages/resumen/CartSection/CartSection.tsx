@@ -5,6 +5,7 @@ import { useCartContext } from "@/hooks/cart.hooks";
 import { Button } from "@/components/UI";
 import "./CartSection.css";
 import { decrementQuantity, incrementQuantity, removeCartProduct } from "@/actions/cart.actions";
+import { PrivateRoutes } from "@/enums";
 
 const CART_HEADERS = ["Producto", "Nombre", "Precio", "Cantidad", "Eliminar"];
 
@@ -74,7 +75,7 @@ export const CartSection = () => {
         <div className="cart-empty-message">
           <ShoppingCart size={150} />
           <span className="title">Carrito vacío</span>
-          <Button variant="secondary" onClick={() => navigate("/#products-section")}>
+          <Button variant="secondary" onClick={() => navigate(PrivateRoutes.Dashboard)}>
             Ir de compras!
           </Button>
         </div>

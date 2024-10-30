@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.css";
 
@@ -8,7 +8,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   const modal = (

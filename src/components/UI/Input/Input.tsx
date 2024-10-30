@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import { HelperText } from "../HelperText/HelperText";
 import "./Input.css";
 
@@ -9,14 +9,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export const Input = ({
+export const Input: FC<InputProps> = ({
   variant = "primary",
   dimension = "medium",
   error = "",
   className = "",
   containerClassName = "",
   ...props
-}: InputProps) => {
+}) => {
   const customClassname = `input ${dimension} ${variant} ${props.disabled ? "disabled" : ""} ${error ? "danger" : ""} ${className}`;
   const customContainerClass = `input-container ${containerClassName}`;
 

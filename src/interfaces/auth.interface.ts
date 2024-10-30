@@ -28,7 +28,7 @@ export interface Credentials {
 
 export interface AuthInfoAction {
   type: AuthInfoActionType;
-  payload: AuthInfo;
+  payload: Partial<AuthInfo>;
 }
 
 export interface AuthInfoContextProps {

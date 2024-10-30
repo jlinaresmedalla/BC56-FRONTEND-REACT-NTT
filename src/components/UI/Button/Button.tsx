@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import "./Button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   dimension?: "medium" | "small" | "icon" | "chip";
 }
 
-export const Button = ({ variant = "primary", dimension = "medium", className = "", ...props }: ButtonProps) => {
+export const Button: FC<ButtonProps> = ({ variant = "primary", dimension = "medium", className = "", ...props }) => {
   const customClassname = `button ${dimension} ${variant} ${props.disabled ? "disabled" : ""} ${className}`;
   return <button className={customClassname} {...props} />;
 };

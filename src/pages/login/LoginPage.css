@@ -9,7 +9,7 @@
 .login-card {
   display: flex;
   height: 500px;
-  background-color: white;
+  background-color: var(--white-color);
   border-radius: 1rem;
   box-shadow: var(--shadow3);
   overflow: hidden;

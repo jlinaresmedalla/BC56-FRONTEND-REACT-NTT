@@ -1,14 +1,15 @@
 import { Button, HelperText, Input, Select } from "@/components/UI";
-import { useForm } from "@/hooks/form.hooks";
 import { initialShippingFormvalues, shippingFormSchema } from "./FormSection.schema";
 import { useCartContext } from "@/hooks/cart.hooks";
 import { getShippingInfoMapper } from "@/mappings/cart.mapper";
-import { useDistrictListQuery } from "@/hooks/fetch.hooks";
+import { useDistrictListQuery } from "@/hooks/useDistrictListQuery";
 import { useModal } from "@/hooks/modal.hooks";
 import { Modal } from "@/components";
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "@/actions/cart.actions";
+import { useFormik } from "formik";
 import "./FormSection.css";
+import { PrivateRoutes } from "@/enums";
 
 export interface ShippingFormValues {
   firstName: string;
@@ -23,12 +24,12 @@ export const FormSection = () => {
   const navigate = useNavigate();
   const { cartState, dispatch } = useCartContext();
   const { isModalOpen, openModal, closeModal } = useModal();
-  const districtList = useDistrictListQuery();
+  const { data: districtList } = useDistrictListQuery();
 
-  const { values, errors, touched, handleSubmit, handleChange, isSubmitting } = useForm<ShippingFormValues>({
+  const { values, errors, touched, handleSubmit, handleChange, isSubmitting } = useFormik<ShippingFormValues>({
     initialValues: initialShippingFormvalues,
     validationSchema: shippingFormSchema,
-    onSubmit: (values, resetForm) => {
+    onSubmit: (values, { resetForm }) => {
       if (!cartState.length) return;
 
       const body = getShippingInfoMapper(values, cartState);
@@ -53,7 +54,6 @@ export const FormSection = () => {
               name="firstName"
               value={values.firstName}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.firstName ? errors.firstName : ""}
             />
           </span>
@@ -64,7 +64,6 @@ export const FormSection = () => {
               name="lastName"
               value={values.lastName}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.lastName ? errors.lastName : ""}
             />
           </span>
@@ -72,13 +71,12 @@ export const FormSection = () => {
             <label className="title">Distrito*</label>
             <Select
               name="district"
-              options={districtList}
+              options={districtList!}
               valueKey={"value"}
               labelKey={"label"}
               staticLabel="Selecciona tu distrito"
               value={values.district}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.district ? errors.district : ""}
             />
           </span>
@@ -89,7 +87,6 @@ export const FormSection = () => {
               name="address"
               value={values.address}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.address ? errors.address : ""}
             />
           </span>
@@ -100,7 +97,6 @@ export const FormSection = () => {
               name="reference"
               value={values.reference}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.reference ? errors.reference : ""}
             />
           </span>
@@ -111,7 +107,6 @@ export const FormSection = () => {
               name="phone"
               value={values.phone}
               onChange={handleChange}
-              onBlur={handleChange}
               error={touched.phone ? errors.phone : ""}
               maxLength={9}
             />
@@ -131,7 +126,7 @@ export const FormSection = () => {
           <h3 className="primary-text-color">
             <center>Su compra se realizó con exito! 🎉</center>
           </h3>
-          <Button variant="secondary" onClick={() => navigate("/#products-section")}>
+          <Button variant="secondary" onClick={() => navigate(PrivateRoutes.Dashboard)}>
             Aceptar
           </Button>
         </div>

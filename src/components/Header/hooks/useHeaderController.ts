@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const useHeaderController = () => {
   const navigate = useNavigate();
   const {
-    authInfoState: { firstName, lastName },
+    authInfoState: { firstName, image },
     dispatch,
   } = useAuthContext();
   const { cartState } = useCartContext();
@@ -21,7 +21,5 @@ export const useHeaderController = () => {
 
   const handleCartButton = () => navigate(PrivateRoutes.Resumen);
 
-  const fullName = `${firstName} ${lastName}`;
-
-  return { cartCount, fullName, handleLogOutButton, handleCartButton };
+  return { cartCount, firstName, image, handleLogOutButton, handleCartButton };
 };
