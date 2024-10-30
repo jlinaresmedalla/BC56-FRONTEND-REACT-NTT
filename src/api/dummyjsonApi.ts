@@ -10,7 +10,7 @@ import {
 import { getAuthInfoMapper } from "@/mappings/auth.mapper";
 import { getCategoryListMapper, getProductListMapper } from "@/mappings/request.mapper";
 
-const API_URL = "https://dummyjson.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const getProducts = async (): Promise<Product[]> => {
   try {

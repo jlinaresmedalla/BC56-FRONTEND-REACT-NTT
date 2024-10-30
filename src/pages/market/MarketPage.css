@@ -35,6 +35,33 @@
   width: 200px;
 }
 
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.products-section > .filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  gap: 1rem;
+  min-height: 500px;
+}
+
 @media (max-width: 700px) {
   .banner {
     height: auto;
@@ -53,5 +80,18 @@
 
   .banner > div > a > button {
     width: 100%;
+  }
+
+  .products-section > .filters {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .search-category {
+    width: 100%;
+  }
+
+  .productsContainer {
+    flex-direction: column;
   }
 }

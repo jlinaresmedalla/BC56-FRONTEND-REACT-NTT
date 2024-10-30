@@ -6,3 +6,4 @@ export * from "./Layout/Layout";
 export * from "./Modal/Modal";
 export * from "./Provider/AppProvider";
 export * from "./AuthHoc/AuthHoc";
+export * from "./UI/Pagination/Pagination";
