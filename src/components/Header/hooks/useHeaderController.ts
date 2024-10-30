@@ -1,4 +1,5 @@
 import { resetAuthInfo } from "@/actions/auth.actions";
+import { resetCart } from "@/actions/cart.actions";
 import { PrivateRoutes, PublicRoutes } from "@/enums";
 import { getCartCount } from "@/helpers/cart.helpers";
 import { useAuthContext } from "@/hooks/auth.hooks";
@@ -9,13 +10,14 @@ export const useHeaderController = () => {
   const navigate = useNavigate();
   const {
     authInfoState: { firstName, image },
-    dispatch,
+    dispatch: authDispatch,
   } = useAuthContext();
-  const { cartState } = useCartContext();
+  const { cartState, dispatch: cartDispatch } = useCartContext();
   const cartCount = getCartCount(cartState);
 
   const handleLogOutButton = () => {
-    resetAuthInfo(dispatch);
+    resetAuthInfo(authDispatch);
+    resetCart(cartDispatch);
     navigate(PublicRoutes.Login);
   };
 
