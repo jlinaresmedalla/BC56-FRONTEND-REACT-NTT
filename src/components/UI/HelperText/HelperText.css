@@ -1,0 +1,20 @@
+.helper-text {
+  padding: 0 0.5rem;
+  font-weight: 500;
+}
+
+.helper-text.medium {
+  font-size: 1rem;
+}
+
+.helper-text.small {
+  font-size: 0.75rem;
+}
+
+.helper-text.default {
+  color: inherit;
+}
+
+.helper-text.danger {
+  color: var(--danger-color);
+}

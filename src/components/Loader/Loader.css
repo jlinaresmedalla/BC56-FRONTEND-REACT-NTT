@@ -1,0 +1,20 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.spinner {
+  color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
