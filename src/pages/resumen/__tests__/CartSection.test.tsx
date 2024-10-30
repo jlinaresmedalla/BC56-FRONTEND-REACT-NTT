@@ -28,9 +28,9 @@ jest.mock("react-router-dom", () => ({
 const renderComponent = async (): Promise<RenderResult> => {
   const component = await act(async () =>
     render(
-      <MemoryRouter initialEntries={["/resumen"]}>
+      <MemoryRouter initialEntries={[PrivateRoutes.Resumen]}>
         <Routes>
-          <Route path="/resumen" element={<CartSection />} />
+          <Route path={PrivateRoutes.Resumen} element={<CartSection />} />
         </Routes>
       </MemoryRouter>,
     ),

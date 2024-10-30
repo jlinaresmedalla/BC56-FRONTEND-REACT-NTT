@@ -15,15 +15,20 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPag
 
   return (
     <div className="pagination">
-      <button onClick={() => prevPage()} disabled={currentPage === 1}>
+      <button onClick={() => prevPage()} disabled={currentPage === 1} data-testid="paginationPrevBtn">
         <ChevronLeft />
       </button>
       {pages.map((page, index) => (
-        <button key={index} onClick={() => onPageChange(page)} className={page === currentPage ? "active" : ""}>
+        <button
+          key={index}
+          onClick={() => onPageChange(page)}
+          className={page === currentPage ? "active" : ""}
+          data-testid="paginationPageChangeBtn"
+        >
           {page}
         </button>
       ))}
-      <button onClick={() => nextPage()} disabled={currentPage === totalPages}>
+      <button onClick={() => nextPage()} disabled={currentPage === totalPages} data-testid="paginationNextBtn">
         <ChevronRight />
       </button>
     </div>
