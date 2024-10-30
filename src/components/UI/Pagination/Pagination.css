@@ -29,12 +29,12 @@
 
 .pagination button:hover {
   background-color: var(--secondary-color);
-  color: #fff;
+  color: var(--white-color);
 }
 
 .pagination button.active {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--white-color);
 }
 
 .pagination button:disabled {

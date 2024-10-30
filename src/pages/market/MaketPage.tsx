@@ -62,6 +62,15 @@ export const MarketPage = () => {
             value={selectedCategory}
           />
         </div>
+        {!!productList.length && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        )}
         <div className="products-container" id="products-container">
           {isProductListLoading ? (
             <Loader size={100} />

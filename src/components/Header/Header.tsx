@@ -1,7 +1,7 @@
 import { LogOut, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../UI";
-import { PrivateRoutes } from "@/enums";
+import { BaseColors, PrivateRoutes } from "@/enums";
 import { useHeaderController } from "./hooks/useHeaderController";
 import "./Header.css";
 
@@ -28,7 +28,8 @@ export const Header = () => {
             {firstName} <img src={image} width={"20px"} alt="avatar" />
           </Button>
           <Button variant="secondary" dimension="chip" onClick={handleCartButton}>
-            <span id="cart-count">{cartCount}</span> <ShoppingCart size={20} color="#ffffff" strokeWidth={2.5} />
+            <span id="cart-count">{cartCount}</span>
+            <ShoppingCart size={20} color={BaseColors.White} strokeWidth={2.5} />
           </Button>
           <Button dimension="chip" variant="danger" className="desktop-hide" onClick={handleLogOutButton}>
             <LogOut size={20} strokeWidth={3} />

@@ -2,6 +2,7 @@ import { FC } from "react";
 import { CartItem, Product } from "@/interfaces";
 import { Star } from "lucide-react";
 import { Button } from "../UI";
+import { BaseColors } from "@/enums";
 import "./ProductCard.css";
 
 interface ProductCardProps extends Product {
@@ -32,7 +33,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           </span>
           <span className="rating">
             <span className="subtitle">Rating:</span> <span>{rating}</span>
-            <Star size={16} color="#ffae00" strokeWidth={3} />
+            <Star size={16} color={BaseColors.Yellow} strokeWidth={3} />
           </span>
         </div>
       </div>
