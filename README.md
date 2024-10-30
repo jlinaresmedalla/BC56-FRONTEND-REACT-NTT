@@ -37,6 +37,8 @@ npm run dev
 │
 ├── /contexts         # Configuracion de contextos, reducers y providers para la app.
 │
+├── /enums            # Constantes y enums para la app.
+│
 ├── /helpers          # Métodos y funciones para responsabilidades específicas
 │
 ├── /hooks            # Functionalidades y acciones
@@ -48,6 +50,8 @@ npm run dev
 ├── /pages            # Paginas con sus respectivos modulos y/o secciones.
 │
 ├── /routes           # Rutas de la aplicación
+│
+├── /services         # Servicios
 │
 ├── /styles           # Estilos en general
 │
@@ -61,10 +65,14 @@ npm run dev
 
 ## Criterios
 
-### Semana 4 - Pruebas Unitarias
+### Semana 5 - Proyecto Integrador
 
 Para este entregable se consideró lo siguiente:
 
-- Realizar el coverage del proyecto.
-- Implementar mocks.
-- Cubrir la mayor parte de funcionalidades y componentes.
+- Añadir hoc para proteger las rutas.
+- Refactorizar y organizar el código para hacerlo mas mantenible y escalable, en base al feedback dado.
+- Se instalaron librerias para las alertas, manejo de formularios y gestion de estados asincronos.
+- Se migraron los custom hooks de formulario y queries al uso de librerias como formik y react query.
+- Se añadió un hoc para protección de rutas privadas.
+- Realizar el coverage del proyecto y de las nuevas funcionalidades.
+- Implementar mocks para los test adicionales.
