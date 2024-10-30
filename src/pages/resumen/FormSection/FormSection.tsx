@@ -8,8 +8,8 @@ import { Modal } from "@/components";
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "@/actions/cart.actions";
 import { useFormik } from "formik";
-import "./FormSection.css";
 import { PrivateRoutes } from "@/enums";
+import "./FormSection.css";
 
 export interface ShippingFormValues {
   firstName: string;

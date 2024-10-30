@@ -5,6 +5,7 @@ import { useCartContext } from "@/hooks/cart.hooks";
 import { incrementQuantity, decrementQuantity, removeCartProduct } from "@/actions/cart.actions";
 import { act } from "react";
 import { cartMock } from "@/__mocks__";
+import { PrivateRoutes } from "@/enums";
 
 const mockNavigate = jest.fn();
 const mockDispatch = jest.fn();
@@ -82,6 +83,6 @@ describe("CartSection module section", () => {
     await renderComponent();
 
     fireEvent.click(screen.getByText("Ir de compras!"));
-    expect(mockNavigate).toHaveBeenCalledWith("/#products-section");
+    expect(mockNavigate).toHaveBeenCalledWith(PrivateRoutes.Dashboard);
   });
 });

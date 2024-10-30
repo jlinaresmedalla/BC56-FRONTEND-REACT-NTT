@@ -1,7 +1,7 @@
-import { CartActionType } from "@/interfaces";
 import { setPersistedCart } from "@/helpers/cart.helpers";
-import { cartReducer } from "../cart.context";
 import { cartItemsMock, cartMock } from "@/__mocks__";
+import { CartActionType } from "@/enums";
+import { cartReducer } from "../reducers/cart.reducer";
 
 jest.mock("@/helpers/cart.helpers", () => ({
   setPersistedCart: jest.fn(),
@@ -18,7 +18,7 @@ describe("cartReducer", () => {
   });
 
   it("should add a product to the cart", () => {
-    const action = { type: CartActionType.ADD_PRODUCT, payload: cartItemsMock };
+    const action = { type: CartActionType.AddCartProduct, payload: cartItemsMock };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toHaveLength(2);
@@ -26,7 +26,7 @@ describe("cartReducer", () => {
   });
 
   it("should remove a product from the cart", () => {
-    const action = { type: CartActionType.REMOVE_PRODUCT, payload: 1 };
+    const action = { type: CartActionType.RemoveProduct, payload: 1 };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toHaveLength(0);
@@ -35,7 +35,7 @@ describe("cartReducer", () => {
   });
 
   it("should increment product quantity", () => {
-    const action = { type: CartActionType.INCREMENT_QUANTITY, payload: 1 };
+    const action = { type: CartActionType.IncrementQuantity, payload: 1 };
     const newState = cartReducer(cartMock, action);
 
     expect(newState.find((product) => product.id === 1)!.quantity).toBe(3);
@@ -43,7 +43,7 @@ describe("cartReducer", () => {
   });
 
   it("should not increment product quantity", () => {
-    const action = { type: CartActionType.INCREMENT_QUANTITY, payload: 0 };
+    const action = { type: CartActionType.IncrementQuantity, payload: 0 };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toEqual(cartMock);
@@ -51,7 +51,7 @@ describe("cartReducer", () => {
   });
 
   it("should decrement the quantity of a product", () => {
-    const action = { type: CartActionType.DECREMENT_QUANTITY, payload: 1 };
+    const action = { type: CartActionType.DecrementQuantity, payload: 1 };
     const newState = cartReducer(cartMock, action);
 
     expect(newState.find((product) => product.id === 1)!.quantity).toBe(1);
@@ -59,7 +59,7 @@ describe("cartReducer", () => {
   });
 
   it("should not decrement the quantity below 1", () => {
-    const action = { type: CartActionType.DECREMENT_QUANTITY, payload: 0 };
+    const action = { type: CartActionType.DecrementQuantity, payload: 0 };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toEqual(cartMock);
@@ -67,7 +67,7 @@ describe("cartReducer", () => {
   });
 
   it("should set the cart with provided items", () => {
-    const action = { type: CartActionType.SET_CART, payload: [] };
+    const action = { type: CartActionType.SetCart, payload: [] };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toEqual([]);
@@ -75,7 +75,7 @@ describe("cartReducer", () => {
   });
 
   it("should set the cart with provided items", () => {
-    const action = { type: CartActionType.SET_CART, payload: [] };
+    const action = { type: CartActionType.SetCart, payload: [] };
     const newState = cartReducer(cartMock, action);
 
     expect(newState).toEqual([]);

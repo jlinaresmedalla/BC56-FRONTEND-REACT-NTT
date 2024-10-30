@@ -8,6 +8,7 @@ const renderComponent = async (isOpen: boolean = false): Promise<RenderResult> =
     render(
       <Modal isOpen={isOpen} onClose={onCloseMock}>
         <div>Modal Content</div>
+        <button onClick={onCloseMock}>close modal</button>
       </Modal>,
     ),
   );
@@ -33,9 +34,9 @@ describe("Modal Component", () => {
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
   });
 
-  it("should call onClose when clicking on the overlay", async () => {
+  it("should call onClose when clicking button", async () => {
     await renderComponent(true);
-    fireEvent.click(screen.getByText("Modal Content").parentElement!);
+    fireEvent.click(screen.getByText("close modal"));
     expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,4 +1,4 @@
-import { getCategories, getProducts, getProductsByCategory } from "./dummyjsonApi";
+import { getCategories, getProducts, getProductsByCategory } from "../dummyjsonApi";
 import { categoriesApiResponseMock, categoriesMock, productListMock, productsApiResponseMock } from "@/__mocks__";
 
 const mockfetch = (data: unknown, status = 200, ok = true): jest.Mock => {

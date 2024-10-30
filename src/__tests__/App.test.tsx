@@ -6,6 +6,6 @@ describe("App", () => {
     await act(async () => {
       render(<App />);
     });
-    expect(screen.getByText("NTT Store")).toBeInTheDocument();
+    expect(screen.getByText("Inicio de sesión")).toBeInTheDocument();
   });
 });

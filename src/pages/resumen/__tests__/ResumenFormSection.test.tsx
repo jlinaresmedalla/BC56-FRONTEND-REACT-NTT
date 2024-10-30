@@ -3,6 +3,8 @@ import { useCartContext } from "@/hooks/cart.hooks";
 import { FormSection } from "../FormSection/FormSection";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { cartMock } from "@/__mocks__";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { PrivateRoutes } from "@/enums";
 
 const mockNavigate = jest.fn();
 
@@ -21,14 +23,19 @@ jest.mock("@/actions/cart.actions", () => ({
   resetCart: jest.fn(),
 }));
 
+const queryClient = new QueryClient();
+
 const renderComponent = async (): Promise<RenderResult> => {
   const component = await act(async () =>
     render(
-      <MemoryRouter initialEntries={["/resumen"]}>
-        <Routes>
-          <Route path="/resumen" element={<FormSection />} />
-        </Routes>
-      </MemoryRouter>,
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={[PrivateRoutes.Resumen]}>
+          <Routes>
+            <Route path={PrivateRoutes.Resumen} element={<FormSection />} />
+          </Routes>
+        </MemoryRouter>
+        ,
+      </QueryClientProvider>,
     ),
   );
   return component;
@@ -75,7 +82,7 @@ describe("FormSection module", () => {
     });
 
     fireEvent.click(screen.getByText("Aceptar"));
-    expect(mockNavigate).toHaveBeenCalledWith("/#products-section");
+    expect(mockNavigate).toHaveBeenCalledWith(PrivateRoutes.Dashboard);
     expect(mockNavigate).toHaveBeenCalledTimes(1);
   });
 
